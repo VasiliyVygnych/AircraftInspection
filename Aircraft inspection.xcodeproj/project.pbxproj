@@ -1,0 +1,1004 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		99A76EBF2BB7624D003F7A1F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EBE2BB7624D003F7A1F /* CollectionViewCell.swift */; };
+		99A76EC52BB7700E003F7A1F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EC32BB7700E003F7A1F /* Model.xcdatamodeld */; };
+		99A76ECA2BB77182003F7A1F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EC92BB77182003F7A1F /* CoreDataManager.swift */; };
+		99A76ECC2BB771AB003F7A1F /* AirplaneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76ECB2BB771AB003F7A1F /* AirplaneList.swift */; };
+		99A76ECF2BB77EE4003F7A1F /* AddingAirplaneCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76ECE2BB77EE4003F7A1F /* AddingAirplaneCard.swift */; };
+		99A76ED22BB78D3D003F7A1F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76ED12BB78D3D003F7A1F /* String.swift */; };
+		99A76ED42BB81176003F7A1F /* EditingAirplaneCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76ED32BB81176003F7A1F /* EditingAirplaneCard.swift */; };
+		99A76ED62BB81595003F7A1F /* DetailAirplaneCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76ED52BB81595003F7A1F /* DetailAirplaneCard.swift */; };
+		99A76EDA2BB84316003F7A1F /* FlightsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76ED92BB84316003F7A1F /* FlightsController.swift */; };
+		99A76EDE2BB843DD003F7A1F /* AnalyticsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EDD2BB843DD003F7A1F /* AnalyticsController.swift */; };
+		99A76EE52BBAC367003F7A1F /* MonitoringList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EE42BBAC367003F7A1F /* MonitoringList.swift */; };
+		99A76EE72BC3BE46003F7A1F /* MonitoringProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EE62BC3BE46003F7A1F /* MonitoringProtocols.swift */; };
+		99A76EE92BC3BED9003F7A1F /* MonitoringAssemblerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EE82BC3BED9003F7A1F /* MonitoringAssemblerBuilder.swift */; };
+		99A76EEB2BC3BEF9003F7A1F /* MonitoringCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EEA2BC3BEF9003F7A1F /* MonitoringCoordinator.swift */; };
+		99A76EED2BC3BF35003F7A1F /* MonitoringViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EEC2BC3BF35003F7A1F /* MonitoringViewModel.swift */; };
+		99A76EF22BC3C6D8003F7A1F /* AddingMonotoringCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EF12BC3C6D8003F7A1F /* AddingMonotoringCard.swift */; };
+		99A76EF42BC3C6EA003F7A1F /* EditingMonotoringCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EF32BC3C6EA003F7A1F /* EditingMonotoringCard.swift */; };
+		99A76EF62BC3C6FA003F7A1F /* DetailMonotoringCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EF52BC3C6FA003F7A1F /* DetailMonotoringCard.swift */; };
+		99A76EF82BC529CC003F7A1F /* FlightsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EF72BC529CC003F7A1F /* FlightsList.swift */; };
+		99A76EFF2BC534BD003F7A1F /* FlightsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76EFE2BC534BD003F7A1F /* FlightsProtocols.swift */; };
+		99A76F012BC534CC003F7A1F /* FlightsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F002BC534CC003F7A1F /* FlightsCoordinator.swift */; };
+		99A76F032BC534D4003F7A1F /* FlightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F022BC534D4003F7A1F /* FlightsViewModel.swift */; };
+		99A76F052BC534DF003F7A1F /* FlightsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F042BC534DF003F7A1F /* FlightsBuilder.swift */; };
+		99A76F072BC536CC003F7A1F /* AddAircraftInspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F062BC536CC003F7A1F /* AddAircraftInspection.swift */; };
+		99A76F092BC54168003F7A1F /* AircraftInspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F082BC54168003F7A1F /* AircraftInspection.swift */; };
+		99A76F0B2BC54A41003F7A1F /* InspectionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F0A2BC54A41003F7A1F /* InspectionCollectionCell.swift */; };
+		99A76F122BC58A11003F7A1F /* AnalyticsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F112BC58A11003F7A1F /* AnalyticsProtocols.swift */; };
+		99A76F142BC58B10003F7A1F /* AnalyticsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F132BC58B10003F7A1F /* AnalyticsBuilder.swift */; };
+		99A76F162BC58B29003F7A1F /* AnalyticsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F152BC58B29003F7A1F /* AnalyticsCoordinator.swift */; };
+		99A76F182BC58D7E003F7A1F /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F172BC58D7E003F7A1F /* AnalyticsViewModel.swift */; };
+		99A76F1A2BC5D0BD003F7A1F /* DetailAnalyticsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F192BC5D0BD003F7A1F /* DetailAnalyticsController.swift */; };
+		99A76F202BC6900D003F7A1F /* SettingsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F1F2BC6900D003F7A1F /* SettingsProtocols.swift */; };
+		99A76F222BC69016003F7A1F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F212BC69016003F7A1F /* SettingsViewModel.swift */; };
+		99A76F242BC6901D003F7A1F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F232BC6901D003F7A1F /* SettingsController.swift */; };
+		99A76F292BC7D106003F7A1F /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F282BC7D106003F7A1F /* UIFont.swift */; };
+		99A76F3B2BC7E40A003F7A1F /* Roboto_Flex_700.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A76F3A2BC7E40A003F7A1F /* Roboto_Flex_700.ttf */; };
+		99A76F3D2BC7E4A9003F7A1F /* Roboto_Flex_500.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A76F3C2BC7E4A9003F7A1F /* Roboto_Flex_500.ttf */; };
+		99A76F3F2BC7E4B1003F7A1F /* Roboto_Flex_400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A76F3E2BC7E4B1003F7A1F /* Roboto_Flex_400.ttf */; };
+		99A76F412BC7E4B7003F7A1F /* Roboto_Flex_300.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A76F402BC7E4B7003F7A1F /* Roboto_Flex_300.ttf */; };
+		99A76F432BC84F38003F7A1F /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F422BC84F38003F7A1F /* Bool.swift */; };
+		99C37E002BB71C2900DCD913 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37DFF2BB71C2900DCD913 /* AppDelegate.swift */; };
+		99C37E022BB71C2900DCD913 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E012BB71C2900DCD913 /* SceneDelegate.swift */; };
+		99C37E042BB71C2900DCD913 /* LoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E032BB71C2900DCD913 /* LoaderViewController.swift */; };
+		99C37E092BB71C2A00DCD913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99C37E082BB71C2A00DCD913 /* Assets.xcassets */; };
+		99C37E0C2BB71C2A00DCD913 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 99C37E0B2BB71C2A00DCD913 /* Base */; };
+		99C37E182BB7218000DCD913 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99C37E172BB7218000DCD913 /* SnapKit */; };
+		99C37E1A2BB7218000DCD913 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 99C37E192BB7218000DCD913 /* SnapKit-Dynamic */; };
+		99C37E202BB72BE000DCD913 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E1F2BB72BE000DCD913 /* BaseViewController.swift */; };
+		99C37E242BB72C1000DCD913 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E232BB72C1000DCD913 /* Enums.swift */; };
+		99C37E292BB72D5B00DCD913 /* AssemblerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E282BB72D5B00DCD913 /* AssemblerBuilder.swift */; };
+		99C37E2B2BB72D5F00DCD913 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E2A2BB72D5F00DCD913 /* Coordinator.swift */; };
+		99C37E2D2BB72D6300DCD913 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E2C2BB72D6300DCD913 /* Protocols.swift */; };
+		99C37E2F2BB72DDD00DCD913 /* LoaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E2E2BB72DDD00DCD913 /* LoaderViewModel.swift */; };
+		99C37E312BB72F4B00DCD913 /* FirstLoaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E302BB72F4B00DCD913 /* FirstLoaderController.swift */; };
+		99C37E332BB72F9600DCD913 /* SecondLoaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E322BB72F9600DCD913 /* SecondLoaderController.swift */; };
+		99C37E352BB72FA100DCD913 /* ThirdLoaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E342BB72FA100DCD913 /* ThirdLoaderController.swift */; };
+		99C37E382BB754EF00DCD913 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E372BB754EF00DCD913 /* TabBarController.swift */; };
+		99C37E3B2BB7557F00DCD913 /* TechnicalServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E3A2BB7557F00DCD913 /* TechnicalServiceController.swift */; };
+		99C37E402BB755FF00DCD913 /* TSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E3F2BB755FF00DCD913 /* TSViewModel.swift */; };
+		99C37E422BB7560A00DCD913 /* TSProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E412BB7560A00DCD913 /* TSProtocols.swift */; };
+		99C37E462BB7564900DCD913 /* TSAssemblerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E452BB7564900DCD913 /* TSAssemblerBuilder.swift */; };
+		99C37E482BB7564F00DCD913 /* TSCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E472BB7564F00DCD913 /* TSCoordinator.swift */; };
+		99C37E4B2BB757C800DCD913 /* MonitoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E4A2BB757C800DCD913 /* MonitoringController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		99A76EBE2BB7624D003F7A1F /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		99A76EC42BB7700E003F7A1F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		99A76EC92BB77182003F7A1F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		99A76ECB2BB771AB003F7A1F /* AirplaneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirplaneList.swift; sourceTree = "<group>"; };
+		99A76ECE2BB77EE4003F7A1F /* AddingAirplaneCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAirplaneCard.swift; sourceTree = "<group>"; };
+		99A76ED12BB78D3D003F7A1F /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		99A76ED32BB81176003F7A1F /* EditingAirplaneCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingAirplaneCard.swift; sourceTree = "<group>"; };
+		99A76ED52BB81595003F7A1F /* DetailAirplaneCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAirplaneCard.swift; sourceTree = "<group>"; };
+		99A76ED92BB84316003F7A1F /* FlightsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsController.swift; sourceTree = "<group>"; };
+		99A76EDD2BB843DD003F7A1F /* AnalyticsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsController.swift; sourceTree = "<group>"; };
+		99A76EE42BBAC367003F7A1F /* MonitoringList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringList.swift; sourceTree = "<group>"; };
+		99A76EE62BC3BE46003F7A1F /* MonitoringProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringProtocols.swift; sourceTree = "<group>"; };
+		99A76EE82BC3BED9003F7A1F /* MonitoringAssemblerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringAssemblerBuilder.swift; sourceTree = "<group>"; };
+		99A76EEA2BC3BEF9003F7A1F /* MonitoringCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringCoordinator.swift; sourceTree = "<group>"; };
+		99A76EEC2BC3BF35003F7A1F /* MonitoringViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringViewModel.swift; sourceTree = "<group>"; };
+		99A76EF12BC3C6D8003F7A1F /* AddingMonotoringCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingMonotoringCard.swift; sourceTree = "<group>"; };
+		99A76EF32BC3C6EA003F7A1F /* EditingMonotoringCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingMonotoringCard.swift; sourceTree = "<group>"; };
+		99A76EF52BC3C6FA003F7A1F /* DetailMonotoringCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMonotoringCard.swift; sourceTree = "<group>"; };
+		99A76EF72BC529CC003F7A1F /* FlightsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsList.swift; sourceTree = "<group>"; };
+		99A76EFE2BC534BD003F7A1F /* FlightsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsProtocols.swift; sourceTree = "<group>"; };
+		99A76F002BC534CC003F7A1F /* FlightsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsCoordinator.swift; sourceTree = "<group>"; };
+		99A76F022BC534D4003F7A1F /* FlightsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsViewModel.swift; sourceTree = "<group>"; };
+		99A76F042BC534DF003F7A1F /* FlightsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsBuilder.swift; sourceTree = "<group>"; };
+		99A76F062BC536CC003F7A1F /* AddAircraftInspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAircraftInspection.swift; sourceTree = "<group>"; };
+		99A76F082BC54168003F7A1F /* AircraftInspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftInspection.swift; sourceTree = "<group>"; };
+		99A76F0A2BC54A41003F7A1F /* InspectionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionCollectionCell.swift; sourceTree = "<group>"; };
+		99A76F112BC58A11003F7A1F /* AnalyticsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsProtocols.swift; sourceTree = "<group>"; };
+		99A76F132BC58B10003F7A1F /* AnalyticsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsBuilder.swift; sourceTree = "<group>"; };
+		99A76F152BC58B29003F7A1F /* AnalyticsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCoordinator.swift; sourceTree = "<group>"; };
+		99A76F172BC58D7E003F7A1F /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewModel.swift; sourceTree = "<group>"; };
+		99A76F192BC5D0BD003F7A1F /* DetailAnalyticsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnalyticsController.swift; sourceTree = "<group>"; };
+		99A76F1F2BC6900D003F7A1F /* SettingsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProtocols.swift; sourceTree = "<group>"; };
+		99A76F212BC69016003F7A1F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		99A76F232BC6901D003F7A1F /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		99A76F282BC7D106003F7A1F /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		99A76F3A2BC7E40A003F7A1F /* Roboto_Flex_700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Roboto_Flex_700.ttf; sourceTree = "<group>"; };
+		99A76F3C2BC7E4A9003F7A1F /* Roboto_Flex_500.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Roboto_Flex_500.ttf; sourceTree = "<group>"; };
+		99A76F3E2BC7E4B1003F7A1F /* Roboto_Flex_400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Roboto_Flex_400.ttf; sourceTree = "<group>"; };
+		99A76F402BC7E4B7003F7A1F /* Roboto_Flex_300.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Roboto_Flex_300.ttf; sourceTree = "<group>"; };
+		99A76F422BC84F38003F7A1F /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
+		99C37DFC2BB71C2900DCD913 /* Aircraft inspection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aircraft inspection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99C37DFF2BB71C2900DCD913 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		99C37E012BB71C2900DCD913 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		99C37E032BB71C2900DCD913 /* LoaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderViewController.swift; sourceTree = "<group>"; };
+		99C37E082BB71C2A00DCD913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		99C37E0B2BB71C2A00DCD913 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		99C37E0D2BB71C2A00DCD913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99C37E1F2BB72BE000DCD913 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		99C37E232BB72C1000DCD913 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		99C37E282BB72D5B00DCD913 /* AssemblerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblerBuilder.swift; sourceTree = "<group>"; };
+		99C37E2A2BB72D5F00DCD913 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		99C37E2C2BB72D6300DCD913 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		99C37E2E2BB72DDD00DCD913 /* LoaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderViewModel.swift; sourceTree = "<group>"; };
+		99C37E302BB72F4B00DCD913 /* FirstLoaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoaderController.swift; sourceTree = "<group>"; };
+		99C37E322BB72F9600DCD913 /* SecondLoaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondLoaderController.swift; sourceTree = "<group>"; };
+		99C37E342BB72FA100DCD913 /* ThirdLoaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdLoaderController.swift; sourceTree = "<group>"; };
+		99C37E372BB754EF00DCD913 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		99C37E3A2BB7557F00DCD913 /* TechnicalServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalServiceController.swift; sourceTree = "<group>"; };
+		99C37E3F2BB755FF00DCD913 /* TSViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSViewModel.swift; sourceTree = "<group>"; };
+		99C37E412BB7560A00DCD913 /* TSProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSProtocols.swift; sourceTree = "<group>"; };
+		99C37E452BB7564900DCD913 /* TSAssemblerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSAssemblerBuilder.swift; sourceTree = "<group>"; };
+		99C37E472BB7564F00DCD913 /* TSCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSCoordinator.swift; sourceTree = "<group>"; };
+		99C37E4A2BB757C800DCD913 /* MonitoringController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		99C37DF92BB71C2900DCD913 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99C37E182BB7218000DCD913 /* SnapKit in Frameworks */,
+				99C37E1A2BB7218000DCD913 /* SnapKit-Dynamic in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		99A76EBD2BB7624A003F7A1F /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				99A76EBE2BB7624D003F7A1F /* CollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		99A76EC82BB77176003F7A1F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				99A76EF92BC5336E003F7A1F /* CoreDataManager */,
+				99A76EC32BB7700E003F7A1F /* Model.xcdatamodeld */,
+				99A76ECB2BB771AB003F7A1F /* AirplaneList.swift */,
+				99A76EE42BBAC367003F7A1F /* MonitoringList.swift */,
+				99A76EF72BC529CC003F7A1F /* FlightsList.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		99A76ED02BB78D2D003F7A1F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				99A76ED12BB78D3D003F7A1F /* String.swift */,
+				99A76F282BC7D106003F7A1F /* UIFont.swift */,
+				99A76F422BC84F38003F7A1F /* Bool.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		99A76ED72BB842FE003F7A1F /* FlightsModule */ = {
+			isa = PBXGroup;
+			children = (
+				99A76EFA2BC53481003F7A1F /* Protocols */,
+				99A76EFB2BC5348E003F7A1F /* AssemblerBuilder */,
+				99A76EFC2BC534A1003F7A1F /* Coordinator */,
+				99A76EFD2BC534AD003F7A1F /* ViewModel */,
+				99A76ED82BB8430C003F7A1F /* Controller */,
+			);
+			path = FlightsModule;
+			sourceTree = "<group>";
+		};
+		99A76ED82BB8430C003F7A1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				99A76ED92BB84316003F7A1F /* FlightsController.swift */,
+				99A76F062BC536CC003F7A1F /* AddAircraftInspection.swift */,
+				99A76F082BC54168003F7A1F /* AircraftInspection.swift */,
+				99A76F0C2BC576BB003F7A1F /* InspectionCollectionCell */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		99A76EDB2BB843C2003F7A1F /* AnalyticsModule */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F0D2BC58904003F7A1F /* Protocols */,
+				99A76F0E2BC5897F003F7A1F /* AssemblerBuilder */,
+				99A76F0F2BC58983003F7A1F /* Coordinator */,
+				99A76F102BC58988003F7A1F /* ViewModel */,
+				99A76EDC2BB843D0003F7A1F /* Controller */,
+			);
+			path = AnalyticsModule;
+			sourceTree = "<group>";
+		};
+		99A76EDC2BB843D0003F7A1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				99A76EDD2BB843DD003F7A1F /* AnalyticsController.swift */,
+				99A76F192BC5D0BD003F7A1F /* DetailAnalyticsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		99A76EDF2BBABC07003F7A1F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				99A76EE62BC3BE46003F7A1F /* MonitoringProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		99A76EE02BBABC12003F7A1F /* AssemblerBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				99A76EE82BC3BED9003F7A1F /* MonitoringAssemblerBuilder.swift */,
+			);
+			path = AssemblerBuilder;
+			sourceTree = "<group>";
+		};
+		99A76EE12BBABC1B003F7A1F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				99A76EEA2BC3BEF9003F7A1F /* MonitoringCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		99A76EE22BBABC21003F7A1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				99A76EEC2BC3BF35003F7A1F /* MonitoringViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		99A76EE32BBABC2B003F7A1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E4A2BB757C800DCD913 /* MonitoringController.swift */,
+				99A76EF12BC3C6D8003F7A1F /* AddingMonotoringCard.swift */,
+				99A76EF32BC3C6EA003F7A1F /* EditingMonotoringCard.swift */,
+				99A76EF52BC3C6FA003F7A1F /* DetailMonotoringCard.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		99A76EF92BC5336E003F7A1F /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				99A76EC92BB77182003F7A1F /* CoreDataManager.swift */,
+			);
+			path = CoreDataManager;
+			sourceTree = "<group>";
+		};
+		99A76EFA2BC53481003F7A1F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				99A76EFE2BC534BD003F7A1F /* FlightsProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		99A76EFB2BC5348E003F7A1F /* AssemblerBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F042BC534DF003F7A1F /* FlightsBuilder.swift */,
+			);
+			path = AssemblerBuilder;
+			sourceTree = "<group>";
+		};
+		99A76EFC2BC534A1003F7A1F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F002BC534CC003F7A1F /* FlightsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		99A76EFD2BC534AD003F7A1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F022BC534D4003F7A1F /* FlightsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		99A76F0C2BC576BB003F7A1F /* InspectionCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F0A2BC54A41003F7A1F /* InspectionCollectionCell.swift */,
+			);
+			path = InspectionCollectionCell;
+			sourceTree = "<group>";
+		};
+		99A76F0D2BC58904003F7A1F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F112BC58A11003F7A1F /* AnalyticsProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		99A76F0E2BC5897F003F7A1F /* AssemblerBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F132BC58B10003F7A1F /* AnalyticsBuilder.swift */,
+			);
+			path = AssemblerBuilder;
+			sourceTree = "<group>";
+		};
+		99A76F0F2BC58983003F7A1F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F152BC58B29003F7A1F /* AnalyticsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		99A76F102BC58988003F7A1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F172BC58D7E003F7A1F /* AnalyticsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		99A76F1B2BC68FCF003F7A1F /* SettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F1E2BC68FFB003F7A1F /* Protocols */,
+				99A76F1D2BC68FF5003F7A1F /* ViewModel */,
+				99A76F1C2BC68FEE003F7A1F /* Controller */,
+			);
+			path = SettingsModule;
+			sourceTree = "<group>";
+		};
+		99A76F1C2BC68FEE003F7A1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F232BC6901D003F7A1F /* SettingsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		99A76F1D2BC68FF5003F7A1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F212BC69016003F7A1F /* SettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		99A76F1E2BC68FFB003F7A1F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F1F2BC6900D003F7A1F /* SettingsProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		99A76F2A2BC7D10F003F7A1F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F3A2BC7E40A003F7A1F /* Roboto_Flex_700.ttf */,
+				99A76F3C2BC7E4A9003F7A1F /* Roboto_Flex_500.ttf */,
+				99A76F3E2BC7E4B1003F7A1F /* Roboto_Flex_400.ttf */,
+				99A76F402BC7E4B7003F7A1F /* Roboto_Flex_300.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		99C37DF32BB71C2900DCD913 = {
+			isa = PBXGroup;
+			children = (
+				99C37DFE2BB71C2900DCD913 /* Aircraft inspection */,
+				99C37DFD2BB71C2900DCD913 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		99C37DFD2BB71C2900DCD913 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				99C37DFC2BB71C2900DCD913 /* Aircraft inspection.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		99C37DFE2BB71C2900DCD913 /* Aircraft inspection */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E132BB71C6700DCD913 /* AppModule */,
+				99C37E212BB72C0500DCD913 /* Helpers */,
+				99C37E1E2BB72BD600DCD913 /* BaseViewController */,
+				99C37E1B2BB72B8A00DCD913 /* PreloaderModule */,
+				99C37E362BB754C200DCD913 /* TabBarController */,
+				99A76EBD2BB7624A003F7A1F /* CollectionViewCell */,
+				99C37E392BB7555A00DCD913 /* ServiceModule */,
+				99C37E492BB757A800DCD913 /* MonitoringModule */,
+				99A76ED72BB842FE003F7A1F /* FlightsModule */,
+				99A76EDB2BB843C2003F7A1F /* AnalyticsModule */,
+				99A76F1B2BC68FCF003F7A1F /* SettingsModule */,
+			);
+			path = "Aircraft inspection";
+			sourceTree = "<group>";
+		};
+		99C37E132BB71C6700DCD913 /* AppModule */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E152BB71D8C00DCD913 /* Delegates */,
+				99C37E142BB71C8400DCD913 /* Resources */,
+			);
+			path = AppModule;
+			sourceTree = "<group>";
+		};
+		99C37E142BB71C8400DCD913 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E082BB71C2A00DCD913 /* Assets.xcassets */,
+				99C37E0A2BB71C2A00DCD913 /* LaunchScreen.storyboard */,
+				99C37E0D2BB71C2A00DCD913 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		99C37E152BB71D8C00DCD913 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				99C37DFF2BB71C2900DCD913 /* AppDelegate.swift */,
+				99C37E012BB71C2900DCD913 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		99C37E1B2BB72B8A00DCD913 /* PreloaderModule */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E252BB72D2B00DCD913 /* Protocols */,
+				99C37E262BB72D3000DCD913 /* AssemblerBuilder */,
+				99C37E272BB72D4C00DCD913 /* Coordinator */,
+				99C37E1C2BB72B9200DCD913 /* ViewModel */,
+				99C37E1D2BB72B9C00DCD913 /* Controllers */,
+			);
+			path = PreloaderModule;
+			sourceTree = "<group>";
+		};
+		99C37E1C2BB72B9200DCD913 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E2E2BB72DDD00DCD913 /* LoaderViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		99C37E1D2BB72B9C00DCD913 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E032BB71C2900DCD913 /* LoaderViewController.swift */,
+				99C37E302BB72F4B00DCD913 /* FirstLoaderController.swift */,
+				99C37E322BB72F9600DCD913 /* SecondLoaderController.swift */,
+				99C37E342BB72FA100DCD913 /* ThirdLoaderController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		99C37E1E2BB72BD600DCD913 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E1F2BB72BE000DCD913 /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		99C37E212BB72C0500DCD913 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				99A76EC82BB77176003F7A1F /* CoreData */,
+				99A76ED02BB78D2D003F7A1F /* Extensions */,
+				99A76F2A2BC7D10F003F7A1F /* Fonts */,
+				99C37E222BB72C0B00DCD913 /* Enums */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		99C37E222BB72C0B00DCD913 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E232BB72C1000DCD913 /* Enums.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		99C37E252BB72D2B00DCD913 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E2C2BB72D6300DCD913 /* Protocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		99C37E262BB72D3000DCD913 /* AssemblerBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E282BB72D5B00DCD913 /* AssemblerBuilder.swift */,
+			);
+			path = AssemblerBuilder;
+			sourceTree = "<group>";
+		};
+		99C37E272BB72D4C00DCD913 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E2A2BB72D5F00DCD913 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		99C37E362BB754C200DCD913 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E372BB754EF00DCD913 /* TabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		99C37E392BB7555A00DCD913 /* ServiceModule */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E3C2BB755CB00DCD913 /* Protocols */,
+				99C37E432BB7562C00DCD913 /* AssemblerBuilder */,
+				99C37E442BB7563100DCD913 /* Coordinator */,
+				99C37E3D2BB755D300DCD913 /* ViewModel */,
+				99C37E3E2BB755DA00DCD913 /* Controller */,
+			);
+			path = ServiceModule;
+			sourceTree = "<group>";
+		};
+		99C37E3C2BB755CB00DCD913 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E412BB7560A00DCD913 /* TSProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		99C37E3D2BB755D300DCD913 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E3F2BB755FF00DCD913 /* TSViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		99C37E3E2BB755DA00DCD913 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E3A2BB7557F00DCD913 /* TechnicalServiceController.swift */,
+				99A76ECE2BB77EE4003F7A1F /* AddingAirplaneCard.swift */,
+				99A76ED32BB81176003F7A1F /* EditingAirplaneCard.swift */,
+				99A76ED52BB81595003F7A1F /* DetailAirplaneCard.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		99C37E432BB7562C00DCD913 /* AssemblerBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E452BB7564900DCD913 /* TSAssemblerBuilder.swift */,
+			);
+			path = AssemblerBuilder;
+			sourceTree = "<group>";
+		};
+		99C37E442BB7563100DCD913 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				99C37E472BB7564F00DCD913 /* TSCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		99C37E492BB757A800DCD913 /* MonitoringModule */ = {
+			isa = PBXGroup;
+			children = (
+				99A76EDF2BBABC07003F7A1F /* Protocols */,
+				99A76EE02BBABC12003F7A1F /* AssemblerBuilder */,
+				99A76EE12BBABC1B003F7A1F /* Coordinator */,
+				99A76EE22BBABC21003F7A1F /* ViewModel */,
+				99A76EE32BBABC2B003F7A1F /* Controller */,
+			);
+			path = MonitoringModule;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		99C37DFB2BB71C2900DCD913 /* Aircraft inspection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99C37E102BB71C2A00DCD913 /* Build configuration list for PBXNativeTarget "Aircraft inspection" */;
+			buildPhases = (
+				99C37DF82BB71C2900DCD913 /* Sources */,
+				99C37DF92BB71C2900DCD913 /* Frameworks */,
+				99C37DFA2BB71C2900DCD913 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Aircraft inspection";
+			packageProductDependencies = (
+				99C37E172BB7218000DCD913 /* SnapKit */,
+				99C37E192BB7218000DCD913 /* SnapKit-Dynamic */,
+			);
+			productName = "Aircraft inspection";
+			productReference = 99C37DFC2BB71C2900DCD913 /* Aircraft inspection.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		99C37DF42BB71C2900DCD913 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					99C37DFB2BB71C2900DCD913 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 99C37DF72BB71C2900DCD913 /* Build configuration list for PBXProject "Aircraft inspection" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 99C37DF32BB71C2900DCD913;
+			packageReferences = (
+				99C37E162BB7218000DCD913 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
+			productRefGroup = 99C37DFD2BB71C2900DCD913 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				99C37DFB2BB71C2900DCD913 /* Aircraft inspection */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		99C37DFA2BB71C2900DCD913 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99A76F3B2BC7E40A003F7A1F /* Roboto_Flex_700.ttf in Resources */,
+				99C37E092BB71C2A00DCD913 /* Assets.xcassets in Resources */,
+				99A76F412BC7E4B7003F7A1F /* Roboto_Flex_300.ttf in Resources */,
+				99A76F3D2BC7E4A9003F7A1F /* Roboto_Flex_500.ttf in Resources */,
+				99A76F3F2BC7E4B1003F7A1F /* Roboto_Flex_400.ttf in Resources */,
+				99C37E0C2BB71C2A00DCD913 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		99C37DF82BB71C2900DCD913 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99A76EF62BC3C6FA003F7A1F /* DetailMonotoringCard.swift in Sources */,
+				99A76F0B2BC54A41003F7A1F /* InspectionCollectionCell.swift in Sources */,
+				99A76F242BC6901D003F7A1F /* SettingsController.swift in Sources */,
+				99C37E042BB71C2900DCD913 /* LoaderViewController.swift in Sources */,
+				99C37E2F2BB72DDD00DCD913 /* LoaderViewModel.swift in Sources */,
+				99C37E202BB72BE000DCD913 /* BaseViewController.swift in Sources */,
+				99A76ECC2BB771AB003F7A1F /* AirplaneList.swift in Sources */,
+				99A76EED2BC3BF35003F7A1F /* MonitoringViewModel.swift in Sources */,
+				99C37E242BB72C1000DCD913 /* Enums.swift in Sources */,
+				99A76EF82BC529CC003F7A1F /* FlightsList.swift in Sources */,
+				99A76F182BC58D7E003F7A1F /* AnalyticsViewModel.swift in Sources */,
+				99A76F012BC534CC003F7A1F /* FlightsCoordinator.swift in Sources */,
+				99C37E462BB7564900DCD913 /* TSAssemblerBuilder.swift in Sources */,
+				99C37E352BB72FA100DCD913 /* ThirdLoaderController.swift in Sources */,
+				99A76F122BC58A11003F7A1F /* AnalyticsProtocols.swift in Sources */,
+				99A76F052BC534DF003F7A1F /* FlightsBuilder.swift in Sources */,
+				99A76EF42BC3C6EA003F7A1F /* EditingMonotoringCard.swift in Sources */,
+				99C37E002BB71C2900DCD913 /* AppDelegate.swift in Sources */,
+				99A76F1A2BC5D0BD003F7A1F /* DetailAnalyticsController.swift in Sources */,
+				99A76EE72BC3BE46003F7A1F /* MonitoringProtocols.swift in Sources */,
+				99A76F162BC58B29003F7A1F /* AnalyticsCoordinator.swift in Sources */,
+				99A76F142BC58B10003F7A1F /* AnalyticsBuilder.swift in Sources */,
+				99A76ECA2BB77182003F7A1F /* CoreDataManager.swift in Sources */,
+				99C37E3B2BB7557F00DCD913 /* TechnicalServiceController.swift in Sources */,
+				99C37E312BB72F4B00DCD913 /* FirstLoaderController.swift in Sources */,
+				99A76F072BC536CC003F7A1F /* AddAircraftInspection.swift in Sources */,
+				99A76EE92BC3BED9003F7A1F /* MonitoringAssemblerBuilder.swift in Sources */,
+				99C37E4B2BB757C800DCD913 /* MonitoringController.swift in Sources */,
+				99A76EBF2BB7624D003F7A1F /* CollectionViewCell.swift in Sources */,
+				99C37E292BB72D5B00DCD913 /* AssemblerBuilder.swift in Sources */,
+				99C37E022BB71C2900DCD913 /* SceneDelegate.swift in Sources */,
+				99C37E382BB754EF00DCD913 /* TabBarController.swift in Sources */,
+				99A76EEB2BC3BEF9003F7A1F /* MonitoringCoordinator.swift in Sources */,
+				99A76ED62BB81595003F7A1F /* DetailAirplaneCard.swift in Sources */,
+				99A76ECF2BB77EE4003F7A1F /* AddingAirplaneCard.swift in Sources */,
+				99C37E332BB72F9600DCD913 /* SecondLoaderController.swift in Sources */,
+				99C37E2B2BB72D5F00DCD913 /* Coordinator.swift in Sources */,
+				99A76EDE2BB843DD003F7A1F /* AnalyticsController.swift in Sources */,
+				99A76F092BC54168003F7A1F /* AircraftInspection.swift in Sources */,
+				99A76F032BC534D4003F7A1F /* FlightsViewModel.swift in Sources */,
+				99A76EF22BC3C6D8003F7A1F /* AddingMonotoringCard.swift in Sources */,
+				99C37E402BB755FF00DCD913 /* TSViewModel.swift in Sources */,
+				99A76ED22BB78D3D003F7A1F /* String.swift in Sources */,
+				99C37E482BB7564F00DCD913 /* TSCoordinator.swift in Sources */,
+				99C37E2D2BB72D6300DCD913 /* Protocols.swift in Sources */,
+				99C37E422BB7560A00DCD913 /* TSProtocols.swift in Sources */,
+				99A76ED42BB81176003F7A1F /* EditingAirplaneCard.swift in Sources */,
+				99A76EE52BBAC367003F7A1F /* MonitoringList.swift in Sources */,
+				99A76F432BC84F38003F7A1F /* Bool.swift in Sources */,
+				99A76F222BC69016003F7A1F /* SettingsViewModel.swift in Sources */,
+				99A76EC52BB7700E003F7A1F /* Model.xcdatamodeld in Sources */,
+				99A76EDA2BB84316003F7A1F /* FlightsController.swift in Sources */,
+				99A76F202BC6900D003F7A1F /* SettingsProtocols.swift in Sources */,
+				99A76F292BC7D106003F7A1F /* UIFont.swift in Sources */,
+				99A76EFF2BC534BD003F7A1F /* FlightsProtocols.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		99C37E0A2BB71C2A00DCD913 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99C37E0B2BB71C2A00DCD913 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		99C37E0E2BB71C2A00DCD913 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		99C37E0F2BB71C2A00DCD913 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		99C37E112BB71C2A00DCD913 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H28W9UFVKQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Aircraft inspection/AppModule/Resources/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vasiliydeveloper.Aircraft-inspection";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		99C37E122BB71C2A00DCD913 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H28W9UFVKQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Aircraft inspection/AppModule/Resources/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vasiliydeveloper.Aircraft-inspection";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		99C37DF72BB71C2900DCD913 /* Build configuration list for PBXProject "Aircraft inspection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99C37E0E2BB71C2A00DCD913 /* Debug */,
+				99C37E0F2BB71C2A00DCD913 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99C37E102BB71C2A00DCD913 /* Build configuration list for PBXNativeTarget "Aircraft inspection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99C37E112BB71C2A00DCD913 /* Debug */,
+				99C37E122BB71C2A00DCD913 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		99C37E162BB7218000DCD913 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		99C37E172BB7218000DCD913 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99C37E162BB7218000DCD913 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		99C37E192BB7218000DCD913 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99C37E162BB7218000DCD913 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		99A76EC32BB7700E003F7A1F /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				99A76EC42BB7700E003F7A1F /* Model.xcdatamodel */,
+			);
+			currentVersion = 99A76EC42BB7700E003F7A1F /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 99C37DF42BB71C2900DCD913 /* Project object */;
+}
