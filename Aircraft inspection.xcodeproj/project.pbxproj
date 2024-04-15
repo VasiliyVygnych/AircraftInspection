@@ -47,6 +47,10 @@
 		99A76F3F2BC7E4B1003F7A1F /* Roboto_Flex_400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A76F3E2BC7E4B1003F7A1F /* Roboto_Flex_400.ttf */; };
 		99A76F412BC7E4B7003F7A1F /* Roboto_Flex_300.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A76F402BC7E4B7003F7A1F /* Roboto_Flex_300.ttf */; };
 		99A76F432BC84F38003F7A1F /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F422BC84F38003F7A1F /* Bool.swift */; };
+		99A76F462BCD4CAA003F7A1F /* UsagePolicyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F452BCD4CAA003F7A1F /* UsagePolicyController.swift */; };
+		99A76F482BCD5505003F7A1F /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F472BCD5505003F7A1F /* SupportViewController.swift */; };
+		99A76F512BCD7029003F7A1F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F502BCD7029003F7A1F /* Network.swift */; };
+		99A76F532BCD921B003F7A1F /* SKStoreReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A76F522BCD921B003F7A1F /* SKStoreReviewController.swift */; };
 		99C37E002BB71C2900DCD913 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37DFF2BB71C2900DCD913 /* AppDelegate.swift */; };
 		99C37E022BB71C2900DCD913 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E012BB71C2900DCD913 /* SceneDelegate.swift */; };
 		99C37E042BB71C2900DCD913 /* LoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C37E032BB71C2900DCD913 /* LoaderViewController.swift */; };
@@ -113,6 +117,10 @@
 		99A76F3E2BC7E4B1003F7A1F /* Roboto_Flex_400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Roboto_Flex_400.ttf; sourceTree = "<group>"; };
 		99A76F402BC7E4B7003F7A1F /* Roboto_Flex_300.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Roboto_Flex_300.ttf; sourceTree = "<group>"; };
 		99A76F422BC84F38003F7A1F /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
+		99A76F452BCD4CAA003F7A1F /* UsagePolicyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsagePolicyController.swift; sourceTree = "<group>"; };
+		99A76F472BCD5505003F7A1F /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
+		99A76F502BCD7029003F7A1F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		99A76F522BCD921B003F7A1F /* SKStoreReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKStoreReviewController.swift; sourceTree = "<group>"; };
 		99C37DFC2BB71C2900DCD913 /* Aircraft inspection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aircraft inspection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C37DFF2BB71C2900DCD913 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99C37E012BB71C2900DCD913 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +185,7 @@
 				99A76ED12BB78D3D003F7A1F /* String.swift */,
 				99A76F282BC7D106003F7A1F /* UIFont.swift */,
 				99A76F422BC84F38003F7A1F /* Bool.swift */,
+				99A76F522BCD921B003F7A1F /* SKStoreReviewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -362,6 +371,8 @@
 			isa = PBXGroup;
 			children = (
 				99A76F232BC6901D003F7A1F /* SettingsController.swift */,
+				99A76F452BCD4CAA003F7A1F /* UsagePolicyController.swift */,
+				99A76F472BCD5505003F7A1F /* SupportViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -391,6 +402,14 @@
 				99A76F402BC7E4B7003F7A1F /* Roboto_Flex_300.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		99A76F4F2BCD701D003F7A1F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				99A76F502BCD7029003F7A1F /* Network.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		99C37DF32BB71C2900DCD913 = {
@@ -497,6 +516,7 @@
 		99C37E212BB72C0500DCD913 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				99A76F4F2BCD701D003F7A1F /* Network */,
 				99A76EC82BB77176003F7A1F /* CoreData */,
 				99A76ED02BB78D2D003F7A1F /* Extensions */,
 				99A76F2A2BC7D10F003F7A1F /* Fonts */,
@@ -710,6 +730,7 @@
 				99A76F122BC58A11003F7A1F /* AnalyticsProtocols.swift in Sources */,
 				99A76F052BC534DF003F7A1F /* FlightsBuilder.swift in Sources */,
 				99A76EF42BC3C6EA003F7A1F /* EditingMonotoringCard.swift in Sources */,
+				99A76F482BCD5505003F7A1F /* SupportViewController.swift in Sources */,
 				99C37E002BB71C2900DCD913 /* AppDelegate.swift in Sources */,
 				99A76F1A2BC5D0BD003F7A1F /* DetailAnalyticsController.swift in Sources */,
 				99A76EE72BC3BE46003F7A1F /* MonitoringProtocols.swift in Sources */,
@@ -724,6 +745,7 @@
 				99A76EBF2BB7624D003F7A1F /* CollectionViewCell.swift in Sources */,
 				99C37E292BB72D5B00DCD913 /* AssemblerBuilder.swift in Sources */,
 				99C37E022BB71C2900DCD913 /* SceneDelegate.swift in Sources */,
+				99A76F512BCD7029003F7A1F /* Network.swift in Sources */,
 				99C37E382BB754EF00DCD913 /* TabBarController.swift in Sources */,
 				99A76EEB2BC3BEF9003F7A1F /* MonitoringCoordinator.swift in Sources */,
 				99A76ED62BB81595003F7A1F /* DetailAirplaneCard.swift in Sources */,
@@ -732,6 +754,7 @@
 				99C37E2B2BB72D5F00DCD913 /* Coordinator.swift in Sources */,
 				99A76EDE2BB843DD003F7A1F /* AnalyticsController.swift in Sources */,
 				99A76F092BC54168003F7A1F /* AircraftInspection.swift in Sources */,
+				99A76F462BCD4CAA003F7A1F /* UsagePolicyController.swift in Sources */,
 				99A76F032BC534D4003F7A1F /* FlightsViewModel.swift in Sources */,
 				99A76EF22BC3C6D8003F7A1F /* AddingMonotoringCard.swift in Sources */,
 				99C37E402BB755FF00DCD913 /* TSViewModel.swift in Sources */,
@@ -746,6 +769,7 @@
 				99A76EC52BB7700E003F7A1F /* Model.xcdatamodeld in Sources */,
 				99A76EDA2BB84316003F7A1F /* FlightsController.swift in Sources */,
 				99A76F202BC6900D003F7A1F /* SettingsProtocols.swift in Sources */,
+				99A76F532BCD921B003F7A1F /* SKStoreReviewController.swift in Sources */,
 				99A76F292BC7D106003F7A1F /* UIFont.swift in Sources */,
 				99A76EFF2BC534BD003F7A1F /* FlightsProtocols.swift in Sources */,
 			);

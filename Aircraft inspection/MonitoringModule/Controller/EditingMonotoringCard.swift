@@ -379,7 +379,7 @@ class EditingMonotoringCard: BaseViewController {
         }
         weightTextField.snp.makeConstraints { make in
             make.top.equalTo(weightPlaceholder.snp.bottom).offset(5)
-            make.width.greaterThanOrEqualTo(20)
+            make.width.equalToSuperview().inset(20)
             make.left.equalTo(18)
             make.height.equalTo(27)
         }

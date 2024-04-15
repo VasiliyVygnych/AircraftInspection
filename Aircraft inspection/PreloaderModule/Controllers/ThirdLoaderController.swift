@@ -35,6 +35,20 @@ final class ThirdLoaderController: BaseViewController {
         view.image = UIImage(named: "progressView3")
         return view
     }()
+    private var backImageView: UIImageView = {
+       let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
+        view.image = UIImage(named: "arrow-back")
+        return view
+    }()
+    private var ellipseImage: UIImageView = {
+       let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
+        view.image = UIImage(named: "ellipse")
+        return view
+    }()
 //MARK: UILabel
     private var nameLabel: UILabel = {
        let label = UILabel()
@@ -67,15 +81,25 @@ final class ThirdLoaderController: BaseViewController {
         button.layer.cornerRadius = 12
         return button
     }()
+    private var backButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 16
+        return button
+    }()
 //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(ellipseImage)
         view.addSubview(onboardingImageView)
         view.addSubview(bottomView)
         bottomView.addSubview(nameLabel)
         bottomView.addSubview(titleLabel)
         bottomView.addSubview(progressView)
         view.addSubview(beginButton)
+        view.addSubview(backButton)
+        backButton.addSubview(backImageView)
         setupeConstraint()
         setupeButton()
     }
@@ -89,12 +113,19 @@ final class ThirdLoaderController: BaseViewController {
         beginButton.addTarget(self,
                               action: #selector(openTabBar),
                               for: .touchUpInside)
+        backButton.addTarget(self,
+                             action: #selector(backView),
+                             for: .touchUpInside)
     }
     @objc func openTabBar() {
         viewModel?.clickAnimate(view: beginButton)
         viewModel?.showTabBarController()
         defaults.set(true,
                      forKey: "authorization")
+    }
+    @objc func backView() {
+        ellipseImage.removeFromSuperview()
+        navigationController?.popViewController(animated: true)
     }
 //MARK: setupeConstraint
     private func setupeConstraint() {
@@ -103,6 +134,11 @@ final class ThirdLoaderController: BaseViewController {
             make.width.equalTo(323)
             make.centerX.equalToSuperview()
             make.height.equalTo(660)
+        }
+        ellipseImage.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.height.equalTo(378)
+            make.bottom.equalToSuperview().inset(200)
         }
         beginButton.snp.makeConstraints { make in
             make.width.equalTo(144)
@@ -132,6 +168,16 @@ final class ThirdLoaderController: BaseViewController {
             make.width.equalToSuperview()
             make.height.equalTo(250)
             make.bottom.equalToSuperview()
+        }
+        backButton.snp.makeConstraints { make in
+            make.centerY.equalTo(onboardingImageView.snp.centerY)
+            make.width.height.equalTo(32)
+            make.left.equalTo(onboardingImageView.snp.left).inset(-12)
+            
+        }
+        backImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(18.96)
+            make.centerX.centerY.equalToSuperview()
         }
     }
 }

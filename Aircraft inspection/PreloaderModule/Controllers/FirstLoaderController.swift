@@ -34,6 +34,20 @@ final class FirstLoaderController: BaseViewController {
         view.image = UIImage(named: "progressView1")
         return view
     }()
+    private var ellipseImage: UIImageView = {
+       let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
+        view.image = UIImage(named: "ellipse")
+        return view
+    }()
+    private var nextImageView: UIImageView = {
+       let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
+        view.image = UIImage(named: "arrow-right")
+        return view
+    }()
 //MARK: UILabel
     private var nameLabel: UILabel = {
        let label = UILabel()
@@ -69,18 +83,30 @@ final class FirstLoaderController: BaseViewController {
         
         return label
     }()
+//MARK: UIButton
+    private var nextButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 16
+        return button
+    }()
 //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {
+            self.view.addSubview(self.ellipseImage)
             self.view.addSubview(self.onboardingImageView)
             self.view.addSubview(self.bottomView)
+            self.view.addSubview(self.nextButton)
+            self.nextButton.addSubview(self.nextImageView)
             self.bottomView.addSubview(self.nameLabel)
             self.bottomView.addSubview(self.titleLabel)
             self.bottomView.addSubview(self.progressView)
             self.bottomView.addSubview(self.numberLabel)
             self.setupeConstraint()
             self.setupeGesture()
+            self.setupeButton()
         }
     }
 //MARK: viewWillAppear
@@ -94,9 +120,13 @@ final class FirstLoaderController: BaseViewController {
         view.addGestureRecognizer(swipeGesture)
         swipeGesture.addTarget(self,
                                action: #selector(nextView))
-        gestureRecognizer.addTarget(self,
-                               action: #selector(nextView))
         swipeGesture.direction = .left
+    }
+//MARK: setupeButton
+    private func setupeButton() {
+        nextButton.addTarget(self,
+                             action: #selector(nextView),
+                             for: .touchUpInside)
     }
     @objc func nextView() {
         viewModel?.showSecondController()
@@ -108,6 +138,11 @@ final class FirstLoaderController: BaseViewController {
             make.width.equalTo(323)
             make.centerX.equalToSuperview()
             make.height.equalTo(660)
+        }
+        ellipseImage.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.height.equalTo(378)
+            make.bottom.equalToSuperview().inset(200)
         }
         numberLabel.snp.makeConstraints { make in
             make.width.height.equalTo(47)
@@ -136,6 +171,16 @@ final class FirstLoaderController: BaseViewController {
             make.width.equalToSuperview()
             make.height.equalTo(250)
             make.bottom.equalToSuperview()
+        }
+        nextButton.snp.makeConstraints { make in
+            make.centerY.equalTo(onboardingImageView.snp.centerY)
+            make.width.height.equalTo(32)
+            make.right.equalTo(onboardingImageView.snp.right).inset(-12)
+            
+        }
+        nextImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(18.96)
+            make.centerX.centerY.equalToSuperview()
         }
     }
 }

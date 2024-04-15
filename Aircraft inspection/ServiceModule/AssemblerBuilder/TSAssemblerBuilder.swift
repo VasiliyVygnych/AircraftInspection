@@ -51,8 +51,11 @@ class TSAssemblerBuilder: TSAssemblerBuilderProtocol {
 //MARK: createSettingsController
     func createSettingsController() -> UIViewController {
         let controller = SettingsController()
-        let viewModel: SettingsViewModelProtocol = SettingsViewModel()
+        var viewModel: SettingsViewModelProtocol = SettingsViewModel()
+        let navController = UINavigationController(rootViewController: controller)
+        let network: NetworkProtocol = Network()
         controller.viewModel = viewModel
-        return controller
+        viewModel.network = network
+        return navController
     }
 }

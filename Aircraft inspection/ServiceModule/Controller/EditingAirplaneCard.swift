@@ -388,53 +388,28 @@ extension EditingAirplaneCard: UITextFieldDelegate {
         let newString = (text as NSString).replacingCharacters(in: range,
                                                                with: string)
         if textField == nameTextField {
-            nameView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            nameView.layer.borderWidth = 1
             nameTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 4) == true {
-                nameView.layer.borderColor = UIColor.clear.cgColor
-            }
         }
         if textField == modelTextField {
-            modelView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            modelView.layer.borderWidth = 1
             modelTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 4) == true {
-                modelView.layer.borderColor = UIColor.clear.cgColor
-            }
         }
         if textField == SNTextField {
-            SNView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            SNView.layer.borderWidth = 1
             SNTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 4) == true {
-                SNView.layer.borderColor = UIColor.clear.cgColor
-            }
         }
         if textField == LITextField {
-            LIView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            LIView.layer.borderWidth = 1
             let mask = "**.**.**"
             LITextField.text = "".addingMask(value: newString,
                                              mask: mask)
-            
             if viewModel?.validateCount(text: newString,
                                         minimumCount: 8) == true {
-                LIView.layer.borderColor = UIColor.clear.cgColor
             }
         }
         if textField == UpITextField {
-            UpIView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            UpIView.layer.borderWidth = 1
             let mask = "**.**.**"
             UpITextField.text = "".addingMask(value: newString,
                                               mask: mask)
             if viewModel?.validateCount(text: newString,
                                         minimumCount: 8) == true {
-                UpIView.layer.borderColor = UIColor.clear.cgColor
             }
         }
        return false

@@ -34,6 +34,27 @@ final class SecondLoaderController: BaseViewController {
         view.image = UIImage(named: "progressView2")
         return view
     }()
+    private var ellipseImage: UIImageView = {
+       let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
+        view.image = UIImage(named: "ellipse")
+        return view
+    }()
+    private var nextImageView: UIImageView = {
+       let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
+        view.image = UIImage(named: "arrow-right")
+        return view
+    }()
+    private var backImageView: UIImageView = {
+       let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
+        view.image = UIImage(named: "arrow-back")
+        return view
+    }()
 //MARK: UILabel
     private var nameLabel: UILabel = {
        let label = UILabel()
@@ -69,17 +90,38 @@ final class SecondLoaderController: BaseViewController {
         
         return label
     }()
+//MARK: UIButton
+    private var nextButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 16
+        return button
+    }()
+    private var backButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 16
+        return button
+    }()
 //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(ellipseImage)
         view.addSubview(onboardingImageView)
         view.addSubview(bottomView)
         bottomView.addSubview(nameLabel)
         bottomView.addSubview(titleLabel)
         bottomView.addSubview(progressView)
         bottomView.addSubview(numberLabel)
+        view.addSubview(nextButton)
+        nextButton.addSubview(nextImageView)
+        view.addSubview(backButton)
+        backButton.addSubview(backImageView)
         setupeConstraint()
         setupeGesture()
+        setupeButton()
     }
 //MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
@@ -92,12 +134,23 @@ final class SecondLoaderController: BaseViewController {
         view.addGestureRecognizer(swipeGesture)
         swipeGesture.addTarget(self,
                                action: #selector(nextView))
-        gestureRecognizer.addTarget(self,
-                               action: #selector(nextView))
         swipeGesture.direction = .left
+    }
+//MARK: setupeButton
+    private func setupeButton() {
+        nextButton.addTarget(self,
+                             action: #selector(nextView),
+                             for: .touchUpInside)
+        backButton.addTarget(self,
+                             action: #selector(backView),
+                             for: .touchUpInside)
     }
     @objc func nextView() {
         viewModel?.showThirdController()
+    }
+    @objc func backView() {
+        ellipseImage.removeFromSuperview()
+        navigationController?.popViewController(animated: true)
     }
 //MARK: setupeConstraint
     private func setupeConstraint() {
@@ -106,6 +159,11 @@ final class SecondLoaderController: BaseViewController {
             make.width.equalTo(323)
             make.centerX.equalToSuperview()
             make.height.equalTo(660)
+        }
+        ellipseImage.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.height.equalTo(378)
+            make.bottom.equalToSuperview().inset(200)
         }
         numberLabel.snp.makeConstraints { make in
             make.width.height.equalTo(47)
@@ -134,6 +192,26 @@ final class SecondLoaderController: BaseViewController {
             make.width.equalToSuperview()
             make.height.equalTo(250)
             make.bottom.equalToSuperview()
+        }
+        nextButton.snp.makeConstraints { make in
+            make.centerY.equalTo(onboardingImageView.snp.centerY)
+            make.width.height.equalTo(32)
+            make.right.equalTo(onboardingImageView.snp.right).inset(-12)
+            
+        }
+        nextImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(18.96)
+            make.centerX.centerY.equalToSuperview()
+        }
+        backButton.snp.makeConstraints { make in
+            make.centerY.equalTo(onboardingImageView.snp.centerY)
+            make.width.height.equalTo(32)
+            make.left.equalTo(onboardingImageView.snp.left).inset(-12)
+            
+        }
+        backImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(18.96)
+            make.centerX.centerY.equalToSuperview()
         }
     }
 }

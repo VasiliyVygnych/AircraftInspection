@@ -201,10 +201,10 @@ class DetailAirplaneCard: BaseViewController {
         guard let lastIn = model?.lastInsp else { return }
         guard let UpIn = model?.upcomingInsp else { return }
         formater.dateFormat = "dd.MM.yy"
-        let lastInsp = formater.string(from: lastIn)
-        let UpInsp = formater.string(from: UpIn)
-        LITitleLabel.text = lastInsp
-        UpITitleLabel.text = UpInsp
+//        let lastInsp = formater.string(from: lastIn)
+//        let UpInsp = formater.string(from: UpIn)
+        LITitleLabel.text = formater.string(from: lastIn)
+        UpITitleLabel.text = formater.string(from: UpIn)
     }
 //MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {

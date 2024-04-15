@@ -7,11 +7,23 @@
 
 import UIKit
 
+protocol SettingsControllerDelegate {
+    func setRequest(request: URLRequest)
+}
+
 protocol SettingsViewModelProtocol {
     
+    var view: SettingsControllerDelegate? { get set }
+    var network: NetworkProtocol? { get set }
+    
     func shareApp()
-    func usagePolicy()
     func rateApp()
-    func support() 
     func clickAnimate(view: UIView)
+    func requestUsagePolicy()
+    func requestSupport()
+}
+
+protocol NetworkProtocol {
+    func requestUsagePolicy(completion: @escaping (URLRequest) -> Void)
+    func requestSupport(completion: @escaping (URLRequest) -> Void)
 }

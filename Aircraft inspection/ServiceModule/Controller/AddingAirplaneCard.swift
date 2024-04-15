@@ -187,6 +187,7 @@ class AddingAirplaneCard: BaseViewController {
 //MARK: addSubview
     private func addSubview() {
         view.addSubview(scrollView)
+    
         scrollView.addSubview(nameView)
         nameView.addSubview(namePlaceholder)
         nameView.addSubview(nameTextField)
@@ -203,6 +204,9 @@ class AddingAirplaneCard: BaseViewController {
         LIView.addSubview(LIPlaceholder)
         LIView.addSubview(LITextField)
         LITextField.delegate = self
+
+        
+        
         scrollView.addSubview(UpIView)
         UpIView.addSubview(UpIPlaceholder)
         UpIView.addSubview(UpITextField)
@@ -346,19 +350,29 @@ class AddingAirplaneCard: BaseViewController {
     }
     @objc func save(sender: UIButton) {
         viewModel?.clickAnimate(view: saveButton)
-        addAirplane()
-        dismiss(animated: true) {
-            self.delegate?.reloadData()
+        if sheckValidate() == true {
+            addAirplane()
+            dismiss(animated: true) {
+                self.delegate?.reloadData()
+            }
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
     @objc func willShow(_ notification: Notification) {
 //        let userInfo = notification.userInfo
 //        if let size = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
 //            scrollView.contentOffset = CGPoint(x: 0,
 //                                               y: size.height)
 //        }
-        scrollView.contentOffset = CGPoint(x: 0,
-                                           y: 60)
+//        scrollView.contentOffset = CGPoint(x: 0,
+//                                           y: 60)
     }
     @objc func willHide(_ notification: Notification) {
         scrollView.contentOffset = CGPoint.zero
@@ -368,6 +382,46 @@ class AddingAirplaneCard: BaseViewController {
     }
     deinit {
         removeKeyboardNotofocation()
+    }
+//MARK: sheckValidate
+    func sheckValidate() -> Bool {
+        var validate = Bool()
+        if nameTextField.text == "" {
+            validate = false
+            nameView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            nameView.layer.borderWidth = 1
+        } else {
+            validate = true
+        }
+        if modelTextField.text == "" {
+            validate = false
+            modelView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            modelView.layer.borderWidth = 1
+        } else {
+            validate = true
+        }
+        if SNTextField.text == "" {
+            validate = false
+            SNView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            SNView.layer.borderWidth = 1
+        } else {
+            validate = true
+        }
+        if LITextField.text == "" {
+            validate = false
+            LIView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            LIView.layer.borderWidth = 1
+        } else {
+            validate = true
+        }
+        if UpITextField.text == "" {
+            validate = false
+            UpIView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            UpIView.layer.borderWidth = 1
+        } else {
+            validate = true
+        }
+        return validate
     }
 }
 //MARK: - extension UITextFieldDelegate
@@ -379,36 +433,18 @@ extension AddingAirplaneCard: UITextFieldDelegate {
         let newString = (text as NSString).replacingCharacters(in: range,
                                                                with: string)
         if textField == nameTextField {
-            nameView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            nameView.layer.borderWidth = 1
             nameTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 4) == true {
-                nameView.layer.borderColor = UIColor.clear.cgColor
-            }
+            nameView.layer.borderColor = UIColor.clear.cgColor
         }
         if textField == modelTextField {
-            modelView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            modelView.layer.borderWidth = 1
             modelTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 4) == true {
-                modelView.layer.borderColor = UIColor.clear.cgColor
-            }
-
+            modelView.layer.borderColor = UIColor.clear.cgColor
         }
         if textField == SNTextField {
-            SNView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            SNView.layer.borderWidth = 1
             SNTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 4) == true {
-                SNView.layer.borderColor = UIColor.clear.cgColor
-            }
+            SNView.layer.borderColor = UIColor.clear.cgColor
         }
         if textField == LITextField {
-            LIView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            LIView.layer.borderWidth = 1
             let mask = "**.**.**"
             LITextField.text = "".addingMask(value: newString,
                                              mask: mask)
@@ -419,17 +455,18 @@ extension AddingAirplaneCard: UITextFieldDelegate {
             }
         }
         if textField == UpITextField {
-            UpIView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            UpIView.layer.borderWidth = 1
             let mask = "**.**.**"
             UpITextField.text = "".addingMask(value: newString,
                                               mask: mask)
             if viewModel?.validateCount(text: newString,
                                         minimumCount: 8) == true {
                 UpIView.layer.borderColor = UIColor.clear.cgColor
+//                UpIView.convert(<#T##point: CGPoint##CGPoint#>, to: <#T##any UICoordinateSpace#>)
             }
         }
        return false
+        
+        
     }
 //MARK: textFieldShouldReturn
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {

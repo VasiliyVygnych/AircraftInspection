@@ -54,14 +54,7 @@ class AircraftInspection: BaseViewController {
             .map { $3 }
             .eraseToAnyPublisher()
     }
-    
-//MARK: UIScrollView
-    private lazy var scrollView: UIScrollView = {
-       let view = UIScrollView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
-        return view
-    }()
+
 //MARK: UILabel
     private var nameLabel: UILabel = {
        let label = UILabel()
@@ -333,6 +326,11 @@ class AircraftInspection: BaseViewController {
         view.scrollsToTop = false
         return view
     }()
+    
+    
+    
+    
+    
 //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -340,6 +338,7 @@ class AircraftInspection: BaseViewController {
         setupeConstraint()
         setupeButton()
         setupeDateView()
+        
         nameLabel.text = model?.name
         isButtonEnable
             .assign(to: \.isEnabled,
@@ -362,7 +361,6 @@ class AircraftInspection: BaseViewController {
     }
 //MARK: addSubview
     private func addSubview() {
-        view.addSubview(scrollView)
         view.addSubview(nameLabel)
         view.addSubview(dateVertificationLabel)
         view.addSubview(dateView)
@@ -383,18 +381,18 @@ class AircraftInspection: BaseViewController {
         ICgoodButton.addSubview(ICgoodLabel)
         view.addSubview(ICviolatedButton)
         ICviolatedButton.addSubview(ICviolatedLabel)
-        scrollView.addSubview(notesView)
+        view.addSubview(notesView)
         notesView.addSubview(notesTextView)
         notesTextView.addSubview(notesLabel)
         notesTextView.delegate = self
     
         view.addSubview(toolbar)
-        toolbar.addSubview(toolbarTextView)
         notesTextView.inputAccessoryView = toolbar
-        toolbar.addSubview(toolbarTextView)
-        toolbarTextView.delegate = self
-//        toolbar.isHidden = true
         
+//        toolbar.addSubview(toolbarTextView)
+        
+        toolbarTextView.delegate = self
+        toolbar.isHidden = true
         
         view.addSubview(addButton)
         addButton.addSubview(buttonTitle)
@@ -410,6 +408,13 @@ class AircraftInspection: BaseViewController {
                                     action: #selector(done))
         view.addGestureRecognizer(gestureRecognizer)
     }
+    
+    
+    
+    
+    
+    
+    
 //MARK: setupeButton
     private func setupeButton() {
         SCgoodButton.addTarget(self,
@@ -507,13 +512,19 @@ class AircraftInspection: BaseViewController {
         formatter.dateFormat = "d MMM yyyy"
         dateTextField.text = formatter.string(from: datePicker.date)
         view.endEditing(true)
+        notesTextView.resignFirstResponder()
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 //MARK: setupeConstraint
     private func setupeConstraint() {
-        scrollView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-        }
 //MARK: Name makeConstraints
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(70)
@@ -646,18 +657,18 @@ class AircraftInspection: BaseViewController {
             make.bottom.equalToSuperview().inset(10)
         }
         notesLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().inset(5)
             make.width.equalTo(50)
             make.left.equalTo(5)
             make.height.equalTo(20)
         }
-        
         toolbar.snp.makeConstraints { make in
-            make.height.equalTo(160)
+            make.height.equalTo(175)
         }
-        toolbarTextView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(5)
-        }
+        
+        
+        
+        
 //MARK: addButton makeConstraints
         addButton.snp.makeConstraints { make in
             make.width.equalToSuperview().inset(29)
@@ -675,21 +686,25 @@ class AircraftInspection: BaseViewController {
 //MARK: - extension UITextViewDelegate
 extension AircraftInspection: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        toolbar.isHidden = false
         toolbarTextView.text = textView.text
         notesTextView.text = textView.text
-//        if notesTextView.isHidden == true {
-//            toolbar.isHidden = false
-//        }
         if textView.text == "" {
             notesLabel.isHidden = false
         } else {
             notesLabel.isHidden = true
         }
+  
+    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        toolbar.isHidden = false
+        toolbar.addSubview(toolbarTextView)
+        
+        toolbarTextView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(5)
+        }
     }
     override func touchesBegan(_ touches: Set<UITouch>,
                                with event: UIEvent?) {
-        toolbarTextView.resignFirstResponder()
         notesTextView.resignFirstResponder()
     }
 }

@@ -6,24 +6,34 @@
 //
 
 import UIKit
+import StoreKit
 
-class SettingsViewModel: SettingsViewModelProtocol {
- 
+final class SettingsViewModel: SettingsViewModelProtocol {
+    
+    var view: SettingsControllerDelegate?
+    var network: NetworkProtocol?
+    
+    func requestUsagePolicy() {
+        network?.requestUsagePolicy(completion: { [ weak self ] request in
+            DispatchQueue.main.async {
+                self?.view?.setRequest(request: request)
+            }
+        })
+    }
+    func requestSupport() {
+        network?.requestSupport(completion: { [ weak self ] request in
+            DispatchQueue.main.async {
+                self?.view?.setRequest(request: request)
+            }
+        })
+    }
 //MARK: Share App
     func shareApp() {
         print("Share App")
     }
-    //MARK: Usage Policy
-    func usagePolicy() {
-        print("Usage Policy")
-    }
     //MARK: Rate App
     func rateApp() {
-        print("Rate App")
-    }
-    //MARK: Support
-    func support() {
-        print("Support")
+        SKStoreReviewController.requestReviewInCurrentScene()
     }
 //MARK: clickAnimate
     func clickAnimate(view: UIView) {

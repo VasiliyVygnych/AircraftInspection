@@ -41,8 +41,7 @@ class FlightsCoordinator: FlightsCoordinatorProtocol {
         if let navigationController = navigationController {
             let controller = assembler.createSettingsController()
             if let sheetController = controller.sheetPresentationController {
-                sheetController.detents = [.medium(),
-                                           .large()]
+                sheetController.detents = [.medium()]
             }
             navigationController.present(controller,
                                          animated: true)

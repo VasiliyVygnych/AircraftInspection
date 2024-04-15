@@ -24,14 +24,6 @@ class BaseViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-//MARK: UIImageView
-    private var ellipseImage: UIImageView = {
-       let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = .scaleAspectFill
-        view.image = UIImage(named: "ellipse")
-        return view
-    }()
 //MARK: UIButton
     private var backButton: UIButton = {
         let button = UIButton()
@@ -44,7 +36,6 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
-        view.addSubview(ellipseImage)
         view.addSubview(backButton)
         view.addSubview(navTitle)
         makeConstraint()
@@ -52,11 +43,6 @@ class BaseViewController: UIViewController {
     }
 //MARK: makeConstraint
    private func makeConstraint() {
-        ellipseImage.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.height.equalTo(378)
-            make.bottom.equalToSuperview().inset(200)
-        }
         backButton.snp.makeConstraints { make in
             make.top.equalTo(20)
             make.width.height.equalTo(32)
@@ -85,39 +71,31 @@ extension BaseViewController {
         switch controller {
         case .loader:
             view.backgroundColor = UIColor(named: "background")
-            ellipseImage.isHidden = true
             backButton.isHidden = true
         case .preloader:
             view.backgroundColor = UIColor(named: "background")
             backButton.isHidden = true
         case .edit:
-            ellipseImage.isHidden = true
             navTitle.text = "Edit"
             navTitle.font = .RobotoFlex(ofSize: 20,
                                         weight: ._500)
             view.backgroundColor = UIColor(named: "background")
         case .add:
-            ellipseImage.isHidden = true
             navTitle.text = "Add plane"
             view.backgroundColor = UIColor(named: "background")
         case .monitoring:
             view.backgroundColor = UIColor(named: "background")
-            ellipseImage.isHidden = true
             backButton.isHidden = true
         case .flights :
             view.backgroundColor = UIColor(named: "background")
-            ellipseImage.isHidden = true
             backButton.isHidden = true
         case .analytic:
             view.backgroundColor = UIColor(named: "background")
-            ellipseImage.isHidden = true
             backButton.isHidden = true
         case .defaults:
             view.backgroundColor = UIColor(named: "background")
-            ellipseImage.isHidden = true
         case .settings:
             view.backgroundColor = UIColor(named: "darkGrayColor")
-            ellipseImage.isHidden = true
             navTitle.font = .RobotoFlex(ofSize: 20,
                                         weight: ._500)
             navTitle.text = "Settings"

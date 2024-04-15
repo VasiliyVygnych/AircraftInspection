@@ -11,7 +11,7 @@ import SnapKit
 class SettingsController: BaseViewController {
     
     var viewModel: SettingsViewModelProtocol?
-    
+
 //MARK: Share app
     private var shareButton: UIButton = {
        let view = UIButton()
@@ -253,7 +253,11 @@ class SettingsController: BaseViewController {
     }
     @objc func usagePolicy() {
         viewModel?.clickAnimate(view: uPolicyButton)
-        viewModel?.usagePolicy()
+        let controller = UsagePolicyController()
+        controller.viewModel = viewModel
+        controller.modalPresentationStyle = .fullScreen
+        navigationController?.present(controller,
+                                      animated: true)
     }
     @objc func rateApp() {
         viewModel?.clickAnimate(view: rateButton)
@@ -261,6 +265,11 @@ class SettingsController: BaseViewController {
     }
     @objc func support() {
         viewModel?.clickAnimate(view: supportButton)
-        viewModel?.support()
+        let controller = SupportViewController()
+        controller.viewModel = viewModel
+        controller.modalPresentationStyle = .fullScreen
+        navigationController?.present(controller,
+                                      animated: true)
     }
 }
+

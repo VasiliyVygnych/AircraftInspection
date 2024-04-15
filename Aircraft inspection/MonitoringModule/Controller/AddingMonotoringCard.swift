@@ -76,6 +76,16 @@ class AddingMonotoringCard: BaseViewController {
         label.text = "Weight"
         return label
     }()
+    private var weightUnitLabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = .RobotoFlex(ofSize: 20,
+                                 weight: ._700)
+        label.textAlignment = .left
+        label.text = "kg"
+        return label
+    }()
 //MARK: Engine temperature
     private var ETView: UIView = {
         let view = UIView()
@@ -238,7 +248,15 @@ class AddingMonotoringCard: BaseViewController {
         scrollView.addSubview(weightView)
         weightView.addSubview(weightPlaceholder)
         weightView.addSubview(weightTextField)
+        
+//        weightView.addSubview(weightUnitLabel)
+        weightUnitLabel.isHidden = true
         weightTextField.delegate = self
+        
+        
+        
+        
+        
         scrollView.addSubview(ETView)
         ETView.addSubview(ETPlaceholder)
         ETView.addSubview(ETTextField)
@@ -322,6 +340,20 @@ class AddingMonotoringCard: BaseViewController {
             make.left.equalTo(18)
             make.height.equalTo(27)
         }
+//        weightUnitLabel.snp.makeConstraints { make in
+//            make.top.equalTo(weightPlaceholder.snp.bottom).offset(5)
+//            make.width.equalTo(25)
+//            make.left.equalTo(weightTextField.snp.right).inset(-5)
+//            make.height.equalTo(27)
+//        }
+        
+        
+        
+        
+        
+        
+        
+        
 //MARK: Engine temperature makeConstraints
         ETView.snp.makeConstraints { make in
             make.top.equalTo(weightView.snp.bottom).offset(10)
@@ -430,9 +462,11 @@ class AddingMonotoringCard: BaseViewController {
     }
     @objc func save(sender: UIButton) {
         viewModel?.clickAnimate(view: saveButton)
-        addAirplane()
-        dismiss(animated: true) {
-            self.delegate?.reloadData()
+        if sheckValidate() == true {
+            addAirplane()
+            dismiss(animated: true) {
+                self.delegate?.reloadData()
+            }
         }
     }
     @objc func good(sender: UIButton) {
@@ -478,6 +512,46 @@ class AddingMonotoringCard: BaseViewController {
     deinit {
         removeKeyboardNotofocation()
     }
+//MARK: sheckValidate
+    func sheckValidate() -> Bool {
+        var validate = Bool()
+        if nameTextField.text == "" {
+            validate = false
+            nameView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            nameView.layer.borderWidth = 1
+        } else {
+            validate = true
+        }
+        if weightTextField.text == "" {
+            validate = false
+            weightView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            weightView.layer.borderWidth = 1
+        } else {
+            validate = true
+        }
+        if ETTextField.text == "" {
+            validate = false
+            ETView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            ETView.layer.borderWidth = 1
+        } else {
+            validate = true
+        }
+        if APTextField.text == "" {
+            validate = false
+            APView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            APView.layer.borderWidth = 1
+        } else {
+            validate = true
+        }
+        if FCTextField.text == "" {
+            validate = false
+            FCView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            FCView.layer.borderWidth = 1
+        } else {
+            validate = true
+        }
+        return validate
+    }
 }
 //MARK: - extension UITextFieldDelegate
 extension AddingMonotoringCard: UITextFieldDelegate {
@@ -488,49 +562,24 @@ extension AddingMonotoringCard: UITextFieldDelegate {
         let newString = (text as NSString).replacingCharacters(in: range,
                                                                with: string)
         if textField == nameTextField {
-            nameView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            nameView.layer.borderWidth = 1
             nameTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 4) == true {
-                nameView.layer.borderColor = UIColor.clear.cgColor
-            }
+            nameView.layer.borderColor = UIColor.clear.cgColor
         }
         if textField == weightTextField {
-            weightView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            weightView.layer.borderWidth = 1
             weightTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 2) == true {
-                weightView.layer.borderColor = UIColor.clear.cgColor
-            }
+            weightView.layer.borderColor = UIColor.clear.cgColor
         }
         if textField == ETTextField {
-            ETView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            ETView.layer.borderWidth = 1
             ETTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 2) == true {
-                ETView.layer.borderColor = UIColor.clear.cgColor
-            }
+            ETView.layer.borderColor = UIColor.clear.cgColor
         }
         if textField == APTextField {
-            APView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            APView.layer.borderWidth = 1
             APTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 3) == true {
-                APView.layer.borderColor = UIColor.clear.cgColor
-            }
+            APView.layer.borderColor = UIColor.clear.cgColor
         }
         if textField == FCTextField {
-            FCView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
-            FCView.layer.borderWidth = 1
             FCTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 2) == true {
-                FCView.layer.borderColor = UIColor.clear.cgColor
-            }
+            FCView.layer.borderColor = UIColor.clear.cgColor
         }
        return false
     }

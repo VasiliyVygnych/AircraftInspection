@@ -21,8 +21,6 @@ class TSCoordinator: TSCoordinatorProtocol {
     func setMainController(controller: TechnicalServiceController) {
         assembler.main = controller
     }
-    
-    
 //MARK: presentAddingAirplaneCardView
     func presentAddingAirplaneCardView() {
         if let navigationController = navigationController {
@@ -53,8 +51,7 @@ class TSCoordinator: TSCoordinatorProtocol {
         if let navigationController = navigationController {
             let controller = assembler.createSettingsController()
             if let sheetController = controller.sheetPresentationController {
-                sheetController.detents = [.medium(),
-                                           .large()]
+                sheetController.detents = [.medium()]
             }
             navigationController.present(controller,
                                          animated: true)
