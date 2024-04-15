@@ -16,7 +16,7 @@ class Network: NetworkProtocol {
             completion(request)
     }
     func requestSupport(completion: @escaping (URLRequest) -> Void) {
-        let stringUrl = URL(string: "https://ya.ru/?npr=1")
+        let stringUrl = URL(string: "https://google.com")
         guard let url = stringUrl else { return }
             let request = URLRequest(url: url)
             completion(request)

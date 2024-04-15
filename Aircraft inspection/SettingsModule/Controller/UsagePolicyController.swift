@@ -9,11 +9,23 @@ import UIKit
 import SnapKit
 import WebKit
 
-class UsagePolicyController: UIViewController {
+class UsagePolicyController: UIViewController,
+                                WKUIDelegate {
     
     var viewModel: SettingsViewModelProtocol?
     private var webView = WKWebView()
     
+//MARK: UILabel
+    private var navTitle: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = .RobotoFlex(ofSize: 20,
+                                 weight: ._500)
+        label.text = "Usage Policy"
+        label.textAlignment = .center
+        return label
+    }()
 //MARK: UIButton
     private var backButton: UIButton = {
         let button = UIButton()
@@ -37,15 +49,22 @@ class UsagePolicyController: UIViewController {
     private func setupeWebView() {
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.navigationDelegate = self
         webView.backgroundColor = .white
     }
 //MARK: addSubview
     private func addSubview() {
         view.addSubview(backButton)
-        
+        view.addSubview(navTitle)
     }
 //MARK: setupeConstraint
     private func setupeConstraint() {
+        navTitle.snp.makeConstraints { make in
+            make.top.equalTo(80)
+            make.height.equalTo(22)
+            make.width.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
         backButton.snp.makeConstraints { make in
             make.top.equalTo(80)
             make.width.height.equalTo(32)
@@ -70,5 +89,11 @@ class UsagePolicyController: UIViewController {
 extension UsagePolicyController: SettingsControllerDelegate {
     func setRequest(request: URLRequest) {
         webView.load(request)
+    }
+}
+extension UsagePolicyController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView,
+                 didCommit navigation: WKNavigation!) {
+//        webView.stopLoading()
     }
 }

@@ -19,8 +19,8 @@ class BaseViewController: UIViewController {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
-        label.font = .systemFont(ofSize: 20,
-                                 weight: .semibold)
+        label.font = .RobotoFlex(ofSize: 20,
+                                 weight: ._500)
         label.textAlignment = .center
         return label
     }()

@@ -28,8 +28,11 @@ final class SettingsViewModel: SettingsViewModelProtocol {
         })
     }
 //MARK: Share App
-    func shareApp() {
-        print("Share App")
+    func shareApp() -> UIActivityViewController {
+        let url = URL(string: "https://apps.apple.com/us/app/id0000000")!
+        let vc = UIActivityViewController(activityItems: [url],
+                                          applicationActivities: nil)
+        return vc
     }
     //MARK: Rate App
     func rateApp() {

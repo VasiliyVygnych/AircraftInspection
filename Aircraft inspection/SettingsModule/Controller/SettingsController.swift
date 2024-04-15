@@ -249,7 +249,9 @@ class SettingsController: BaseViewController {
     }
     @objc func share() {
         viewModel?.clickAnimate(view: shareButton)
-        viewModel?.shareApp()
+        guard let vc = viewModel?.shareApp() else { return }
+        present(vc,
+                animated: true)
     }
     @objc func usagePolicy() {
         viewModel?.clickAnimate(view: uPolicyButton)

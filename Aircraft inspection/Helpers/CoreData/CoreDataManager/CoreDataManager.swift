@@ -137,13 +137,6 @@ final class CoreDataManager: CoreDataManagerProtocol {
         delegat.saveContext()
     }
     
-    
-    
-    
-    
-    
-    
-    
 //MARK: - FlightsList
     func deleteFlightsList(id: Int) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FlightsList")
