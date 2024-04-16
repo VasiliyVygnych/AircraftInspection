@@ -76,16 +76,6 @@ class AddingMonotoringCard: BaseViewController {
         label.text = "Weight"
         return label
     }()
-    private var weightUnitLabel: UILabel = {
-       let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
-        label.font = .RobotoFlex(ofSize: 20,
-                                 weight: ._700)
-        label.textAlignment = .left
-        label.text = "kg"
-        return label
-    }()
 //MARK: Engine temperature
     private var ETView: UIView = {
         let view = UIView()
@@ -221,6 +211,13 @@ class AddingMonotoringCard: BaseViewController {
         view.backgroundColor = UIColor(named: "basikGray")
         return view
     }()
+//MARK: UIView
+    private var flexSpaceView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return view
+    }()
 //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -248,15 +245,7 @@ class AddingMonotoringCard: BaseViewController {
         scrollView.addSubview(weightView)
         weightView.addSubview(weightPlaceholder)
         weightView.addSubview(weightTextField)
-        
-//        weightView.addSubview(weightUnitLabel)
-        weightUnitLabel.isHidden = true
         weightTextField.delegate = self
-        
-        
-        
-        
-        
         scrollView.addSubview(ETView)
         ETView.addSubview(ETPlaceholder)
         ETView.addSubview(ETTextField)
@@ -274,6 +263,7 @@ class AddingMonotoringCard: BaseViewController {
         goodButton.addSubview(goodLabel)
         view.addSubview(violatedButton)
         violatedButton.addSubview(violatedLabel)
+        scrollView.addSubview(flexSpaceView)
         view.addSubview(saveButton)
     }
 //MARK: registerForKeyboardNotificftion
@@ -304,10 +294,12 @@ class AddingMonotoringCard: BaseViewController {
         }
 //MARK: Name makeConstraints
         nameView.snp.makeConstraints { make in
-            make.top.equalTo(80)
+            make.top.equalTo(70)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(weightView.snp.top).inset(-10)
         }
         namePlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -326,7 +318,9 @@ class AddingMonotoringCard: BaseViewController {
             make.top.equalTo(nameView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(ETView.snp.top).inset(-10)
         }
         weightPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -340,26 +334,14 @@ class AddingMonotoringCard: BaseViewController {
             make.left.equalTo(18)
             make.height.equalTo(27)
         }
-//        weightUnitLabel.snp.makeConstraints { make in
-//            make.top.equalTo(weightPlaceholder.snp.bottom).offset(5)
-//            make.width.equalTo(25)
-//            make.left.equalTo(weightTextField.snp.right).inset(-5)
-//            make.height.equalTo(27)
-//        }
-        
-        
-        
-        
-        
-        
-        
-        
 //MARK: Engine temperature makeConstraints
         ETView.snp.makeConstraints { make in
             make.top.equalTo(weightView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(APView.snp.top).inset(-10)
         }
         ETPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -378,7 +360,9 @@ class AddingMonotoringCard: BaseViewController {
             make.top.equalTo(ETView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(FCView.snp.top).inset(-10)
         }
         APPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -397,7 +381,9 @@ class AddingMonotoringCard: BaseViewController {
             make.top.equalTo(APView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(violatedButton.snp.top).inset(-10)
         }
         FCPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -421,8 +407,10 @@ class AddingMonotoringCard: BaseViewController {
         violatedButton.snp.makeConstraints { make in
             make.top.equalTo(FCView.snp.bottom).offset(10)
             make.width.equalTo(125)
-            make.height.equalTo(47)
+            make.height.lessThanOrEqualTo(47)
+            make.height.greaterThanOrEqualTo(40)
             make.right.equalTo(-29)
+            make.bottom.equalTo(flexSpaceView.snp.top).inset(-10)
         }
         violatedLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -432,20 +420,29 @@ class AddingMonotoringCard: BaseViewController {
         goodButton.snp.makeConstraints { make in
             make.top.equalTo(FCView.snp.bottom).offset(10)
             make.width.equalTo(125)
-            make.height.equalTo(47)
+            make.height.lessThanOrEqualTo(47)
+            make.height.greaterThanOrEqualTo(40)
             make.right.equalTo(violatedButton.snp.left).inset(-10)
+            make.bottom.equalTo(flexSpaceView.snp.top).inset(-10)
         }
         goodLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(20)
         }
-//MARK: saveButton makeConstraints
+//MARK: flexSpaceView && saveButton makeConstraints
+        flexSpaceView.snp.makeConstraints { make in
+            make.top.equalTo(violatedButton.snp.bottom).offset(10)
+            make.width.equalToSuperview()
+            make.bottom.equalTo(saveButton.snp.top).inset(-10)
+        }
         saveButton.snp.makeConstraints { make in
+            make.top.equalTo(flexSpaceView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
-            make.height.equalTo(67)
+            make.height.lessThanOrEqualTo(67)
+            make.height.greaterThanOrEqualTo(57)
             make.left.equalTo(29)
-            make.bottom.equalToSuperview().inset(40)
+            make.bottomMargin.equalToSuperview().inset(10)
         }
     }
 //MARK: setupeButton

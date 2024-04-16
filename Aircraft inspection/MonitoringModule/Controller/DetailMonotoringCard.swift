@@ -247,6 +247,13 @@ class DetailMonotoringCard: BaseViewController {
                                   for: .normal)
         return button
     }()
+//MARK: UIView
+    private var flexSpaceView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return view
+    }()
 //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -312,6 +319,8 @@ class DetailMonotoringCard: BaseViewController {
         FCView.addSubview(FCPlaceholder)
         FCView.addSubview(FCTitleLabel)
         FCView.addSubview(FCUnitLabel)
+        
+        view.addSubview(flexSpaceView)
     }
 //MARK: setupeButton
     private func setupeButton() {
@@ -374,13 +383,14 @@ class DetailMonotoringCard: BaseViewController {
             make.right.equalTo(removeButton.snp.left).inset(-20)
         }
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(80)
+            make.top.greaterThanOrEqualTo(40)
+            make.top.lessThanOrEqualTo(80)
             make.width.equalTo(200)
             make.height.equalTo(32)
             make.centerX.equalToSuperview()
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(20)
+            make.top.equalTo(nameLabel.snp.bottom).offset(5)
             make.width.equalTo(120)
             make.centerX.equalToSuperview()
             make.height.equalTo(22)
@@ -390,7 +400,9 @@ class DetailMonotoringCard: BaseViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(30)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(balanceView.snp.top).inset(-10)
         }
         weightPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -415,7 +427,9 @@ class DetailMonotoringCard: BaseViewController {
             make.top.equalTo(weightView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(ETView.snp.top).inset(-10)
         }
         balancePlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -444,7 +458,9 @@ class DetailMonotoringCard: BaseViewController {
             make.top.equalTo(balanceView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(APView.snp.top).inset(-10)
         }
         ETPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -469,7 +485,9 @@ class DetailMonotoringCard: BaseViewController {
             make.top.equalTo(ETView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(FCView.snp.top).inset(-10)
         }
         APPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -494,7 +512,9 @@ class DetailMonotoringCard: BaseViewController {
             make.top.equalTo(APView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(flexSpaceView.snp.top).inset(-10)
         }
         FCPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -514,7 +534,12 @@ class DetailMonotoringCard: BaseViewController {
             make.left.equalTo(FCTitleLabel.snp.right).inset(-5)
             make.height.equalTo(27)
         }
-    //MARK: buttonElementImage makeConstraints
+//MARK: flexSpaceView && buttonElementImage makeConstraints
+        flexSpaceView.snp.makeConstraints { make in
+            make.top.equalTo(FCView.snp.bottom).offset(10)
+            make.width.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
         buttonElementImage.snp.makeConstraints { make in
             make.width.equalTo(302)
             make.height.equalTo(169)

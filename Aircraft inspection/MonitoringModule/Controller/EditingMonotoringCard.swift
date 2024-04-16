@@ -251,6 +251,13 @@ class EditingMonotoringCard: BaseViewController {
         button.layer.cornerRadius = 13
         return button
     }()
+//MARK: UIView
+    private var flexSpaceView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return view
+    }()
 //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -301,6 +308,9 @@ class EditingMonotoringCard: BaseViewController {
         goodButton.addSubview(goodLabel)
         view.addSubview(violatedButton)
         violatedButton.addSubview(violatedLabel)
+        
+        
+        scrollView.addSubview(flexSpaceView)
         view.addSubview(saveButton)
     }
 //MARK: setupTextFieldText
@@ -347,10 +357,12 @@ class EditingMonotoringCard: BaseViewController {
         }
 //MARK: Name makeConstraints
         nameView.snp.makeConstraints { make in
-            make.top.equalTo(80)
+            make.top.equalTo(70)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(weightView.snp.top).inset(-10)
         }
         namePlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -369,7 +381,9 @@ class EditingMonotoringCard: BaseViewController {
             make.top.equalTo(nameView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(ETView.snp.top).inset(-10)
         }
         weightPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -379,7 +393,8 @@ class EditingMonotoringCard: BaseViewController {
         }
         weightTextField.snp.makeConstraints { make in
             make.top.equalTo(weightPlaceholder.snp.bottom).offset(5)
-            make.width.equalToSuperview().inset(20)
+            make.width.greaterThanOrEqualTo(10)
+            make.width.lessThanOrEqualTo(100)
             make.left.equalTo(18)
             make.height.equalTo(27)
         }
@@ -394,7 +409,9 @@ class EditingMonotoringCard: BaseViewController {
             make.top.equalTo(weightView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(APView.snp.top).inset(-10)
         }
         ETPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -404,7 +421,8 @@ class EditingMonotoringCard: BaseViewController {
         }
         ETTextField.snp.makeConstraints { make in
             make.top.equalTo(ETPlaceholder.snp.bottom).offset(5)
-            make.width.greaterThanOrEqualTo(20)
+            make.width.greaterThanOrEqualTo(10)
+            make.width.lessThanOrEqualTo(100)
             make.left.equalTo(18)
             make.height.equalTo(27)
         }
@@ -419,7 +437,9 @@ class EditingMonotoringCard: BaseViewController {
             make.top.equalTo(ETView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(FCView.snp.top).inset(-10)
         }
         APPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -429,7 +449,8 @@ class EditingMonotoringCard: BaseViewController {
         }
         APTextField.snp.makeConstraints { make in
             make.top.equalTo(APPlaceholder.snp.bottom).offset(5)
-            make.width.greaterThanOrEqualTo(20)
+            make.width.greaterThanOrEqualTo(10)
+            make.width.lessThanOrEqualTo(100)
             make.left.equalTo(18)
             make.height.equalTo(27)
         }
@@ -444,7 +465,9 @@ class EditingMonotoringCard: BaseViewController {
             make.top.equalTo(APView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(77.5)
+            make.bottom.equalTo(violatedButton.snp.top).inset(-10)
         }
         FCPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -454,7 +477,8 @@ class EditingMonotoringCard: BaseViewController {
         }
         FCTextField.snp.makeConstraints { make in
             make.top.equalTo(FCPlaceholder.snp.bottom).offset(5)
-            make.width.greaterThanOrEqualTo(20)
+            make.width.greaterThanOrEqualTo(10)
+            make.width.lessThanOrEqualTo(100)
             make.left.equalTo(18)
             make.height.equalTo(27)
         }
@@ -466,7 +490,7 @@ class EditingMonotoringCard: BaseViewController {
         }
 //MARK: Balance makeConstraints
         balanceLabel.snp.makeConstraints { make in
-            make.top.equalTo(FCView.snp.bottom).offset(25)
+            make.top.equalTo(FCView.snp.bottom).offset(20)
             make.width.equalTo(70)
             make.height.equalTo(27)
             make.left.equalTo(29)
@@ -474,8 +498,10 @@ class EditingMonotoringCard: BaseViewController {
         violatedButton.snp.makeConstraints { make in
             make.top.equalTo(FCView.snp.bottom).offset(10)
             make.width.equalTo(125)
-            make.height.equalTo(47)
+            make.height.lessThanOrEqualTo(47)
+            make.height.greaterThanOrEqualTo(40)
             make.right.equalTo(-29)
+            make.bottom.equalTo(flexSpaceView.snp.top).inset(-10)
         }
         violatedLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -485,20 +511,29 @@ class EditingMonotoringCard: BaseViewController {
         goodButton.snp.makeConstraints { make in
             make.top.equalTo(FCView.snp.bottom).offset(10)
             make.width.equalTo(125)
-            make.height.equalTo(47)
+            make.height.lessThanOrEqualTo(47)
+            make.height.greaterThanOrEqualTo(40)
             make.right.equalTo(violatedButton.snp.left).inset(-10)
+            make.bottom.equalTo(flexSpaceView.snp.top).inset(-10)
         }
         goodLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(20)
         }
-//MARK: saveButton makeConstraints
+//MARK: flexSpaceView && saveButton makeConstraints
+        flexSpaceView.snp.makeConstraints { make in
+            make.top.equalTo(violatedButton.snp.bottom).offset(10)
+            make.width.equalToSuperview()
+            make.bottom.equalTo(saveButton.snp.top).inset(-10)
+        }
         saveButton.snp.makeConstraints { make in
+            make.top.equalTo(flexSpaceView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
-            make.height.equalTo(67)
+            make.height.lessThanOrEqualTo(67)
+            make.height.greaterThanOrEqualTo(57)
             make.left.equalTo(29)
-            make.bottom.equalToSuperview().inset(40)
+            make.bottomMargin.equalToSuperview().inset(10)
         }
     }
 //MARK: setupeButton

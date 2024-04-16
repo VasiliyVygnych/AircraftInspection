@@ -156,12 +156,13 @@ class SettingsController: BaseViewController {
     }
 //MARK: setupeConstraint
     private func setupeConstraint() {
-//MARK: Share app makeConstraints
         shareButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(90)
+            make.top.equalToSuperview().inset(70)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(64)
+            make.height.lessThanOrEqualTo(64)
+            make.height.greaterThanOrEqualTo(53)
+            make.bottom.equalTo(uPolicyButton.snp.top).inset(-10)
         }
         shareLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -178,7 +179,9 @@ class SettingsController: BaseViewController {
             make.top.equalTo(shareButton.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(64)
+            make.height.lessThanOrEqualTo(64)
+            make.height.greaterThanOrEqualTo(53)
+            make.bottom.equalTo(rateButton.snp.top).inset(-10)
         }
         uPolicyLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -195,7 +198,9 @@ class SettingsController: BaseViewController {
             make.top.equalTo(uPolicyButton.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(64)
+            make.height.lessThanOrEqualTo(64)
+            make.height.greaterThanOrEqualTo(53)
+            make.bottom.equalTo(supportButton.snp.top).inset(-10)
         }
         rateLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -212,7 +217,9 @@ class SettingsController: BaseViewController {
             make.top.equalTo(rateButton.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(64)
+            make.height.lessThanOrEqualTo(64)
+            make.height.greaterThanOrEqualTo(53)
+            make.bottom.equalTo(dateLabel.snp.top).inset(-10)
         }
         supportLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -226,10 +233,11 @@ class SettingsController: BaseViewController {
         }
 //MARK: dateLabel makeConstraints
         dateLabel.snp.makeConstraints { make in
+            make.top.equalTo(supportButton.snp.bottom).offset(10)
             make.width.equalTo(200)
-            make.height.equalTo(27)
+            make.height.greaterThanOrEqualTo(27)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(50)
+            make.bottomMargin.equalToSuperview().inset(10)
         }
     }
 //MARK: setupeButton
@@ -274,4 +282,3 @@ class SettingsController: BaseViewController {
                                       animated: true)
     }
 }
-

@@ -159,7 +159,7 @@ final class LoaderViewController: BaseViewController {
             make.centerX.equalToSuperview()
             make.height.equalTo(96)
             make.width.equalTo(260)
-            make.bottom.equalToSuperview().inset(50)
+            make.bottom.equalToSuperview().inset(35)
         }
         ellipseImage.snp.makeConstraints { make in
             make.width.equalToSuperview()

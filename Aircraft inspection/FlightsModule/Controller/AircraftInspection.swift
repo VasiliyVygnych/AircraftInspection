@@ -56,6 +56,34 @@ class AircraftInspection: BaseViewController {
     }
 
 //MARK: UILabel
+    private var topConteinerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return view
+    }()
+    private var SCConteinerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return view
+    }()
+    private var EAConteinerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return view
+    }()
+    private var ICConteinerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return view
+    }()
+
+    
+    
+//MARK: UILabel
     private var nameLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -330,7 +358,13 @@ class AircraftInspection: BaseViewController {
     
     
     
-    
+//MARK: UIView
+    private var flexSpaceView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return view
+    }()
 //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -361,26 +395,48 @@ class AircraftInspection: BaseViewController {
     }
 //MARK: addSubview
     private func addSubview() {
-        view.addSubview(nameLabel)
-        view.addSubview(dateVertificationLabel)
-        view.addSubview(dateView)
+        view.addSubview(topConteinerView)
+        
+        topConteinerView.addSubview(nameLabel)
+        topConteinerView.addSubview(dateVertificationLabel)
+        topConteinerView.addSubview(dateView)
         dateView.addSubview(dateTextField)
-        view.addSubview(separatorView)
-        view.addSubview(SCLabel)
-        view.addSubview(SCgoodButton)
+        topConteinerView.addSubview(separatorView)
+        
+        view.addSubview(SCConteinerView)
+        
+        SCConteinerView.addSubview(SCLabel)
+        SCConteinerView.addSubview(SCgoodButton)
         SCgoodButton.addSubview(SCgoodLabel)
-        view.addSubview(SCviolatedButton)
+        SCConteinerView.addSubview(SCviolatedButton)
         SCviolatedButton.addSubview(SCviolatedLabel)
-        view.addSubview(EALabel)
-        view.addSubview(EAgoodButton)
+        
+        view.addSubview(EAConteinerView)
+        
+        
+        EAConteinerView.addSubview(EALabel)
+        EAConteinerView.addSubview(EAgoodButton)
         EAgoodButton.addSubview(EAgoodLabel)
-        view.addSubview(EAviolatedButton)
+        EAConteinerView.addSubview(EAviolatedButton)
         EAviolatedButton.addSubview(EAviolatedLabel)
-        view.addSubview(ICLabel)
-        view.addSubview(ICgoodButton)
+        
+        
+        view.addSubview(ICConteinerView)
+        
+        ICConteinerView.addSubview(ICLabel)
+        ICConteinerView.addSubview(ICgoodButton)
         ICgoodButton.addSubview(ICgoodLabel)
-        view.addSubview(ICviolatedButton)
+        ICConteinerView.addSubview(ICviolatedButton)
         ICviolatedButton.addSubview(ICviolatedLabel)
+        
+        
+        
+        view.addSubview(flexSpaceView)
+        
+        
+        
+        
+        
         view.addSubview(notesView)
         notesView.addSubview(notesTextView)
         notesTextView.addSubview(notesLabel)
@@ -395,6 +451,8 @@ class AircraftInspection: BaseViewController {
         toolbar.isHidden = true
         
         view.addSubview(addButton)
+        
+        
         addButton.addSubview(buttonTitle)
     }
 //MARK: setupeButton
@@ -523,25 +581,35 @@ class AircraftInspection: BaseViewController {
     
     
     
+    
+    
 //MARK: setupeConstraint
     private func setupeConstraint() {
 //MARK: Name makeConstraints
+        topConteinerView.snp.makeConstraints { make in
+            make.top.greaterThanOrEqualTo(50)
+            make.top.lessThanOrEqualTo(70)
+            make.width.equalToSuperview()
+            make.height.greaterThanOrEqualTo(100)
+            make.height.lessThanOrEqualTo(110)
+            make.bottom.equalTo(SCConteinerView.snp.top).inset(-10)
+        }
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(70)
+            make.top.equalToSuperview()
             make.width.equalTo(200)
             make.height.equalTo(32)
             make.centerX.equalToSuperview()
         }
         dateVertificationLabel.snp.makeConstraints { make in
-            make.top.equalTo(155)
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
             make.width.equalTo(200)
             make.height.equalTo(27)
         }
         dateView.snp.makeConstraints { make in
-            make.top.equalTo(150)
-            make.width.equalTo(130) 
-            make.height.equalTo(47)
+            make.top.equalTo(topConteinerView.snp.top).offset(39)
+            make.width.equalTo(130)
             make.right.equalTo(-29)
+            make.bottom.equalTo(topConteinerView.snp.bottom).inset(25)
         }
         dateTextField.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -550,23 +618,29 @@ class AircraftInspection: BaseViewController {
             make.height.equalTo(20)
         }
         separatorView.snp.makeConstraints { make in
-            make.top.equalTo(dateView.snp.bottom).offset(30)
+            make.top.equalTo(dateView.snp.bottom).offset(20)
             make.width.equalToSuperview().inset(29)
             make.height.equalTo(2)
             make.left.equalTo(29)
         }
 //MARK: Systems and components makeConstraints
+        SCConteinerView.snp.makeConstraints { make in
+            make.top.equalTo(topConteinerView.snp.bottom).offset(10)
+            make.width.equalToSuperview()
+            make.height.equalTo(90)
+            make.bottom.equalTo(EAConteinerView.snp.top).inset(-10)
+        }
         SCLabel.snp.makeConstraints { make in
-            make.top.equalTo(separatorView.snp.bottom).offset(20)
+            make.top.equalToSuperview()
             make.width.equalTo(200)
             make.height.equalTo(27)
             make.left.equalTo(29)
         }
         SCviolatedButton.snp.makeConstraints { make in
-            make.top.equalTo(SCLabel.snp.bottom).offset(15)
+            make.top.equalTo(SCConteinerView.snp.top).offset(37)
             make.width.equalTo(125)
-            make.height.equalTo(47)
-            make.left.equalTo(separatorView.snp.centerX).offset(10)
+            make.left.equalTo(SCConteinerView.snp.centerX).offset(10)
+            make.bottom.equalTo(SCConteinerView.snp.bottom).inset(5)
         }
         SCviolatedLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -574,10 +648,10 @@ class AircraftInspection: BaseViewController {
             make.height.equalTo(20)
         }
         SCgoodButton.snp.makeConstraints { make in
-            make.top.equalTo(SCLabel.snp.bottom).offset(15)
+            make.top.equalTo(SCConteinerView.snp.top).offset(37)
             make.width.equalTo(125)
-            make.height.equalTo(47)
-            make.right.equalTo(separatorView.snp.centerX).offset(-10)
+            make.right.equalTo(SCConteinerView.snp.centerX).offset(-10)
+            make.bottom.equalTo(SCConteinerView.snp.bottom).inset(5)
         }
         SCgoodLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -585,17 +659,23 @@ class AircraftInspection: BaseViewController {
             make.height.equalTo(20)
         }
 //MARK: Electronics and avionics makeConstraints
+        EAConteinerView.snp.makeConstraints { make in
+            make.top.equalTo(SCConteinerView.snp.bottom).offset(10)
+            make.width.equalToSuperview()
+            make.height.equalTo(90)
+            make.bottom.equalTo(ICConteinerView.snp.top).inset(-10)
+        }
         EALabel.snp.makeConstraints { make in
-            make.top.equalTo(SCgoodButton.snp.bottom).offset(20)
+            make.top.equalToSuperview()
             make.width.equalTo(200)
             make.height.equalTo(27)
             make.left.equalTo(29)
         }
         EAviolatedButton.snp.makeConstraints { make in
-            make.top.equalTo(EALabel.snp.bottom).offset(15)
+            make.top.equalTo(EAConteinerView.snp.top).offset(37)
             make.width.equalTo(125)
-            make.height.equalTo(47)
-            make.left.equalTo(separatorView.snp.centerX).offset(10)
+            make.left.equalTo(EAConteinerView.snp.centerX).offset(10)
+            make.bottom.equalTo(EAConteinerView.snp.bottom).inset(5)
         }
         EAviolatedLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -603,10 +683,10 @@ class AircraftInspection: BaseViewController {
             make.height.equalTo(20)
         }
         EAgoodButton.snp.makeConstraints { make in
-            make.top.equalTo(EALabel.snp.bottom).offset(15)
+            make.top.equalTo(EAConteinerView.snp.top).offset(37)
             make.width.equalTo(125)
-            make.height.equalTo(47)
-            make.right.equalTo(separatorView.snp.centerX).offset(-10)
+            make.right.equalTo(EAConteinerView.snp.centerX).offset(-10)
+            make.bottom.equalTo(EAConteinerView.snp.bottom).inset(5)
         }
         EAgoodLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -614,17 +694,22 @@ class AircraftInspection: BaseViewController {
             make.height.equalTo(20)
         }
 //MARK: Identification and certification makeConstraints
+        ICConteinerView.snp.makeConstraints { make in
+            make.top.equalTo(EAConteinerView.snp.bottom).offset(10)
+            make.width.equalToSuperview()
+            make.height.equalTo(90)
+            make.bottom.equalTo(flexSpaceView.snp.top).inset(-10)
+        }
         ICLabel.snp.makeConstraints { make in
-            make.top.equalTo(EAgoodButton.snp.bottom).offset(20)
+            make.top.equalToSuperview()
             make.width.equalTo(200)
             make.height.equalTo(27)
             make.left.equalTo(29)
         }
-        ICviolatedButton.snp.makeConstraints { make in
-            make.top.equalTo(ICLabel.snp.bottom).offset(15)
+        ICviolatedButton.snp.makeConstraints { make in make.top.equalTo(ICConteinerView.snp.top).offset(37)
             make.width.equalTo(125)
-            make.height.equalTo(47)
-            make.left.equalTo(separatorView.snp.centerX).offset(10)
+            make.left.equalTo(ICConteinerView.snp.centerX).offset(10)
+            make.bottom.equalTo(ICConteinerView.snp.bottom).inset(5)
         }
         ICviolatedLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
@@ -632,22 +717,28 @@ class AircraftInspection: BaseViewController {
             make.height.equalTo(20)
         }
         ICgoodButton.snp.makeConstraints { make in
-            make.top.equalTo(ICLabel.snp.bottom).offset(15)
+            make.top.equalTo(ICConteinerView.snp.top).offset(37)
             make.width.equalTo(125)
-            make.height.equalTo(47)
-            make.right.equalTo(separatorView.snp.centerX).offset(-10)
+            make.right.equalTo(ICConteinerView.snp.centerX).offset(-10)
+            make.bottom.equalTo(ICConteinerView.snp.bottom).inset(5)
         }
         ICgoodLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(20)
         }
+        flexSpaceView.snp.makeConstraints { make in
+            make.top.equalTo(ICConteinerView.snp.bottom).offset(10)
+            make.width.equalToSuperview()
+        }
 //MARK: Notes makeConstraints
         notesView.snp.makeConstraints { make in
+            make.top.equalTo(flexSpaceView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
+            make.height.greaterThanOrEqualTo(39)
             make.height.lessThanOrEqualTo(160)
             make.left.equalTo(29)
-            make.bottom.equalTo(addButton.snp.top).inset(-20)
+            make.bottom.equalTo(addButton.snp.top).inset(-10)
         }
         notesTextView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
@@ -665,16 +756,14 @@ class AircraftInspection: BaseViewController {
         toolbar.snp.makeConstraints { make in
             make.height.equalTo(175)
         }
-        
-        
-        
-        
 //MARK: addButton makeConstraints
         addButton.snp.makeConstraints { make in
+            make.top.equalTo(notesView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
-            make.height.equalTo(67)
+            make.height.greaterThanOrEqualTo(47)
+            make.height.lessThanOrEqualTo(67)
             make.left.equalTo(29)
-            make.bottom.equalToSuperview().inset(40)
+            make.bottomMargin.equalToSuperview().inset(40)
         }
         buttonTitle.snp.makeConstraints { make in
             make.centerY.centerX.equalToSuperview()

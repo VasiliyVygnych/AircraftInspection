@@ -203,36 +203,38 @@ class FlightsController: BaseViewController {
     }
 //MARK: setupeConstraint
     private func setupeConstraint() {
-        conteinerView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(338)
-        }
         topLabel.snp.makeConstraints { make in
-            make.top.equalTo(86)
+            make.top.greaterThanOrEqualTo(66)
+            make.top.lessThanOrEqualTo(86)
             make.centerX.equalToSuperview()
-            make.height.equalTo(30)
-            make.width.equalTo(127)
+            make.height.lessThanOrEqualTo(27)
+            make.width.equalTo(130)
         }
         topSubtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(112)
+            make.top.equalTo(topLabel.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
-            make.height.equalTo(43)
-            make.width.equalTo(151)
+            make.height.lessThanOrEqualTo(22)
+            make.width.equalTo(260)
         }
         settingsButton.snp.makeConstraints { make in
-            make.top.equalTo(84)
+            make.top.equalTo(topLabel.snp.top)
             make.right.equalTo(-20)
             make.width.height.equalTo(24)
         }
+        conteinerView.snp.makeConstraints { make in
+            make.topMargin.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.greaterThanOrEqualTo(268)
+            make.height.lessThanOrEqualTo(338)
+        }
         imageОfЕheLeftCloud.snp.makeConstraints { make in
-            make.top.equalTo(159)
+            make.top.equalTo(topImageView.snp.top)
             make.left.equalTo(-35)
             make.width.equalTo(169)
             make.height.equalTo(104)
         }
         imageОfЕheRightCloud.snp.makeConstraints { make in
-            make.top.equalTo(243)
+            make.top.equalTo(topImageView.snp.bottom).inset(56)
             make.right.equalTo(40)
             make.width.equalTo(124.12)
             make.height.equalTo(79.15)
@@ -247,23 +249,28 @@ class FlightsController: BaseViewController {
             make.width.height.equalTo(27)
         }
         topImageView.snp.makeConstraints { make in
-            make.top.equalTo(168)
             make.centerX.equalToSuperview()
-            make.width.height.equalTo(112)
+            make.width.greaterThanOrEqualTo(74)
+            make.width.lessThanOrEqualTo(112)
+            make.height.greaterThanOrEqualTo(74)
+            make.height.lessThanOrEqualTo(112)
+            make.bottom.equalToSuperview().inset(40)
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(379)
-            make.width.equalTo(120)
+            make.top.equalTo(conteinerView.snp.bottom).offset(30)
+            make.width.equalTo(85)
             make.height.equalTo(22)
             make.left.equalTo(30)
         }
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.top.equalTo(conteinerView.snp.bottom).offset(70)
             make.width.equalToSuperview()
+            make.height.greaterThanOrEqualTo(330)
+            make.height.lessThanOrEqualToSuperview()
             make.bottom.equalToSuperview()
         }
         subTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(543)
+            make.top.equalTo(collectionView.snp.top).offset(40)
             make.centerX.equalToSuperview()
             make.width.equalTo(166)
             make.height.equalTo(43)

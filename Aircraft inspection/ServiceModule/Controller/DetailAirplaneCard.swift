@@ -168,6 +168,13 @@ class DetailAirplaneCard: BaseViewController {
         label.textAlignment = .center
         return label
     }()
+//MARK: UIView
+    private var flexSpaceView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return view
+    }()
 //MARK: UIButton
     private var editButton: UIButton = {
         let button = UIButton()
@@ -201,8 +208,6 @@ class DetailAirplaneCard: BaseViewController {
         guard let lastIn = model?.lastInsp else { return }
         guard let UpIn = model?.upcomingInsp else { return }
         formater.dateFormat = "dd.MM.yy"
-//        let lastInsp = formater.string(from: lastIn)
-//        let UpInsp = formater.string(from: UpIn)
         LITitleLabel.text = formater.string(from: lastIn)
         UpITitleLabel.text = formater.string(from: UpIn)
     }
@@ -233,6 +238,9 @@ class DetailAirplaneCard: BaseViewController {
         view.addSubview(UpIView)
         UpIView.addSubview(UpIPlaceholder)
         UpIView.addSubview(UpITitleLabel)
+        
+        
+        view.addSubview(flexSpaceView)
     }
 //MARK: setupeButton
     private func setupeButton() {
@@ -295,7 +303,7 @@ class DetailAirplaneCard: BaseViewController {
             make.right.equalTo(removeButton.snp.left).inset(-20)
         }
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(80)
+            make.top.equalTo(40)
             make.width.equalTo(200)
             make.height.equalTo(32)
             make.centerX.equalToSuperview()
@@ -307,12 +315,15 @@ class DetailAirplaneCard: BaseViewController {
             make.centerX.equalToSuperview()
         }
         topElementImage.snp.makeConstraints { make in
-            make.top.equalTo(200)
-            make.width.equalTo(301)
-            make.height.equalTo(92.97)
+            make.top.equalTo(modelLabel.snp.bottom).offset(30)
+            make.width.greaterThanOrEqualTo(271)
+            make.width.lessThanOrEqualTo(301)
+            make.height.greaterThanOrEqualTo(62.67)
+            make.height.lessThanOrEqualTo(92.97)
             make.centerX.equalToSuperview()
         }
         titleLabel.snp.makeConstraints { make in
+            make.top.lessThanOrEqualTo(topElementImage.snp.bottom).offset(40)
             make.width.equalTo(120)
             make.left.equalTo(29)
             make.height.equalTo(22)
@@ -322,7 +333,8 @@ class DetailAirplaneCard: BaseViewController {
         modelView.snp.makeConstraints { make in
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.greaterThanOrEqualTo(80)
+            make.height.lessThanOrEqualTo(89)
             make.bottom.equalTo(SNView.snp.top).inset(-10)
         }
         modelPlaceholder.snp.makeConstraints { make in
@@ -339,9 +351,11 @@ class DetailAirplaneCard: BaseViewController {
         }
 //MARK: Serial number makeConstraints
         SNView.snp.makeConstraints { make in
+            make.top.equalTo(modelView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.greaterThanOrEqualTo(80)
+            make.height.lessThanOrEqualTo(89)
             make.bottom.equalTo(LIView.snp.top).inset(-10)
         }
         SNPlaceholder.snp.makeConstraints { make in
@@ -358,9 +372,11 @@ class DetailAirplaneCard: BaseViewController {
         }
 //MARK: Last inspection makeConstraints
         LIView.snp.makeConstraints { make in
+            make.top.equalTo(SNView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.greaterThanOrEqualTo(80)
+            make.height.lessThanOrEqualTo(89)
             make.bottom.equalTo(UpIView.snp.top).inset(-10)
         }
         LIPlaceholder.snp.makeConstraints { make in
@@ -377,10 +393,11 @@ class DetailAirplaneCard: BaseViewController {
         }
 //MARK: Upcoming inspection makeConstraints
         UpIView.snp.makeConstraints { make in
+            make.top.equalTo(LIView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
-            make.bottom.equalToSuperview().inset(50)
+            make.height.greaterThanOrEqualTo(80)
+            make.height.lessThanOrEqualTo(89)
         }
         UpIPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -393,6 +410,12 @@ class DetailAirplaneCard: BaseViewController {
             make.width.equalToSuperview().inset(18)
             make.left.equalTo(18)
             make.height.equalTo(27)
+        }
+//MARK: flexSpaceView && buttonElementImage makeConstraints
+        flexSpaceView.snp.makeConstraints { make in
+            make.top.equalTo(UpIView.snp.bottom).offset(10)
+            make.width.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
         buttonElementImage.snp.makeConstraints { make in
             make.width.equalTo(302)

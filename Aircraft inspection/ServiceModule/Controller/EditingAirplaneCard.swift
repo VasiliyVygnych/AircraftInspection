@@ -155,6 +155,13 @@ class EditingAirplaneCard: BaseViewController {
         label.text = "Upcoming inspection"
         return label
     }()
+//MARK: UIView
+    private var flexSpaceView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return view
+    }()
 //MARK: UIButton
     private var saveButton: UIButton = {
         let button = UIButton()
@@ -208,6 +215,8 @@ class EditingAirplaneCard: BaseViewController {
         UpIView.addSubview(UpIPlaceholder)
         UpIView.addSubview(UpITextField)
         UpITextField.delegate = self
+        
+        scrollView.addSubview(flexSpaceView)
         view.addSubview(saveButton)
     }
 //MARK: setupTextFieldText
@@ -250,11 +259,14 @@ class EditingAirplaneCard: BaseViewController {
             make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview()
         }
+//MARK: Name makeConstraints
         nameView.snp.makeConstraints { make in
             make.top.equalTo(80)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(83)
+            make.bottom.equalTo(modelView.snp.top).inset(-10)
         }
         namePlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -273,7 +285,9 @@ class EditingAirplaneCard: BaseViewController {
             make.top.equalTo(nameView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(83)
+            make.bottom.equalTo(SNView.snp.top).inset(-10)
         }
         modelPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -292,7 +306,9 @@ class EditingAirplaneCard: BaseViewController {
             make.top.equalTo(modelView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(83)
+            make.bottom.equalTo(LIView.snp.top).inset(-10)
         }
         SNPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -311,7 +327,9 @@ class EditingAirplaneCard: BaseViewController {
             make.top.equalTo(SNView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(83)
+            make.bottom.equalTo(UpIView.snp.top).inset(-10)
         }
         LIPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -330,7 +348,9 @@ class EditingAirplaneCard: BaseViewController {
             make.top.equalTo(LIView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
             make.left.equalTo(29)
-            make.height.equalTo(89)
+            make.height.lessThanOrEqualTo(89)
+            make.height.greaterThanOrEqualTo(83)
+            make.bottom.equalTo(flexSpaceView.snp.top).inset(-10)
         }
         UpIPlaceholder.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -344,12 +364,19 @@ class EditingAirplaneCard: BaseViewController {
             make.left.equalTo(18)
             make.height.equalTo(27)
         }
+        flexSpaceView.snp.makeConstraints { make in
+            make.top.equalTo(UpIView.snp.bottom).offset(10)
+            make.width.equalToSuperview()
+            make.bottom.equalTo(saveButton.snp.top).inset(-10)
+        }
 //MARK: saveButton makeConstraints
         saveButton.snp.makeConstraints { make in
+            make.top.equalTo(flexSpaceView.snp.bottom).offset(10)
             make.width.equalToSuperview().inset(29)
-            make.height.equalTo(67)
+            make.height.lessThanOrEqualTo(67)
+            make.height.greaterThanOrEqualTo(57)
             make.left.equalTo(29)
-            make.bottom.equalToSuperview().inset(40)
+            make.bottomMargin.equalToSuperview().inset(20)
         }
     }
 //MARK: setupeButton
