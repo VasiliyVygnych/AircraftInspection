@@ -80,9 +80,6 @@ class AircraftInspection: BaseViewController {
         view.backgroundColor = .clear
         return view
     }()
-
-    
-    
 //MARK: UILabel
     private var nameLabel: UILabel = {
        let label = UILabel()
@@ -329,35 +326,6 @@ class AircraftInspection: BaseViewController {
         label.text = "ADD"
         return label
     }()
-    
-    
-    
-    
-    
-
-    private var toolbar: UIToolbar = {
-       let view = UIToolbar()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.sizeToFit()
-        view.layer.cornerRadius = 11
-        return view
-    }()
-    private lazy var toolbarTextView: UITextView = {
-        let view = UITextView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.textColor = .white
-        view.backgroundColor = UIColor(named: "basikGray")
-        view.layer.cornerRadius = 11
-        view.font = .RobotoFlex(ofSize: 14.8,
-                                weight: ._500)
-        view.isScrollEnabled = false
-        view.scrollsToTop = false
-        return view
-    }()
-    
-    
-    
-    
 //MARK: UIView
     private var flexSpaceView: UIView = {
         let view = UIView()
@@ -372,7 +340,7 @@ class AircraftInspection: BaseViewController {
         setupeConstraint()
         setupeButton()
         setupeDateView()
-        
+        registerForKeyboardNotificftion()
         nameLabel.text = model?.name
         isButtonEnable
             .assign(to: \.isEnabled,
@@ -396,63 +364,35 @@ class AircraftInspection: BaseViewController {
 //MARK: addSubview
     private func addSubview() {
         view.addSubview(topConteinerView)
-        
         topConteinerView.addSubview(nameLabel)
         topConteinerView.addSubview(dateVertificationLabel)
         topConteinerView.addSubview(dateView)
         dateView.addSubview(dateTextField)
         topConteinerView.addSubview(separatorView)
-        
         view.addSubview(SCConteinerView)
-        
         SCConteinerView.addSubview(SCLabel)
         SCConteinerView.addSubview(SCgoodButton)
         SCgoodButton.addSubview(SCgoodLabel)
         SCConteinerView.addSubview(SCviolatedButton)
         SCviolatedButton.addSubview(SCviolatedLabel)
-        
         view.addSubview(EAConteinerView)
-        
-        
         EAConteinerView.addSubview(EALabel)
         EAConteinerView.addSubview(EAgoodButton)
         EAgoodButton.addSubview(EAgoodLabel)
         EAConteinerView.addSubview(EAviolatedButton)
         EAviolatedButton.addSubview(EAviolatedLabel)
-        
-        
         view.addSubview(ICConteinerView)
-        
         ICConteinerView.addSubview(ICLabel)
         ICConteinerView.addSubview(ICgoodButton)
         ICgoodButton.addSubview(ICgoodLabel)
         ICConteinerView.addSubview(ICviolatedButton)
         ICviolatedButton.addSubview(ICviolatedLabel)
-        
-        
-        
         view.addSubview(flexSpaceView)
-        
-        
-        
-        
-        
         view.addSubview(notesView)
         notesView.addSubview(notesTextView)
         notesTextView.addSubview(notesLabel)
         notesTextView.delegate = self
-    
-        view.addSubview(toolbar)
-        notesTextView.inputAccessoryView = toolbar
-        
-//        toolbar.addSubview(toolbarTextView)
-        
-        toolbarTextView.delegate = self
-        toolbar.isHidden = true
-        
         view.addSubview(addButton)
-        
-        
         addButton.addSubview(buttonTitle)
     }
 //MARK: setupeButton
@@ -466,13 +406,26 @@ class AircraftInspection: BaseViewController {
                                     action: #selector(done))
         view.addGestureRecognizer(gestureRecognizer)
     }
-    
-    
-    
-    
-    
-    
-    
+//MARK: registerForKeyboardNotificftion
+    func registerForKeyboardNotificftion() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willShow),
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+//MARK: removeKeyboardNotofocation
+    func removeKeyboardNotofocation() {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillChangeFrameNotification,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
+    }
 //MARK: setupeButton
     private func setupeButton() {
         SCgoodButton.addTarget(self,
@@ -572,17 +525,19 @@ class AircraftInspection: BaseViewController {
         view.endEditing(true)
         notesTextView.resignFirstResponder()
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @objc func willShow(_ notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+               if notesTextView.isFirstResponder {
+                   self.view.frame.origin.y = -keyboardSize.height
+               }
+           }
+    }
+    @objc func willHide(_ notification: Notification) {
+        self.view.frame.origin.y = 0
+    }
+    deinit {
+        removeKeyboardNotofocation()
+    }
 //MARK: setupeConstraint
     private func setupeConstraint() {
 //MARK: Name makeConstraints
@@ -753,9 +708,6 @@ class AircraftInspection: BaseViewController {
             make.left.equalTo(5)
             make.height.equalTo(20)
         }
-        toolbar.snp.makeConstraints { make in
-            make.height.equalTo(175)
-        }
 //MARK: addButton makeConstraints
         addButton.snp.makeConstraints { make in
             make.top.equalTo(notesView.snp.bottom).offset(10)
@@ -775,7 +727,6 @@ class AircraftInspection: BaseViewController {
 //MARK: - extension UITextViewDelegate
 extension AircraftInspection: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        toolbarTextView.text = textView.text
         notesTextView.text = textView.text
         if textView.text == "" {
             notesLabel.isHidden = false
@@ -783,14 +734,6 @@ extension AircraftInspection: UITextViewDelegate {
             notesLabel.isHidden = true
         }
   
-    }
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        toolbar.isHidden = false
-        toolbar.addSubview(toolbarTextView)
-        
-        toolbarTextView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(5)
-        }
     }
     override func touchesBegan(_ touches: Set<UITouch>,
                                with event: UIEvent?) {

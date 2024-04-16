@@ -83,7 +83,7 @@ class TechnicalServiceController: BaseViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
         label.font = .RobotoFlex(ofSize: 15,
-                                 weight: ._300)
+                                 weight: ._400)
         label.textAlignment = .left
         label.text = "Your planes"
         return label
@@ -250,9 +250,6 @@ class TechnicalServiceController: BaseViewController {
             make.centerX.centerY.equalToSuperview()
             make.width.height.equalTo(27)
         }
-        
-        
-        
         topImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.width.lessThanOrEqualTo(254)
@@ -261,9 +258,6 @@ class TechnicalServiceController: BaseViewController {
             make.height.greaterThanOrEqualTo(64)
             make.bottom.equalToSuperview().inset(40)
         }
-        
-        
-        
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(conteinerView.snp.bottom).offset(30)
             make.width.equalTo(85)

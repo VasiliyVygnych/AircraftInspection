@@ -213,8 +213,8 @@ class FlightsController: BaseViewController {
         topSubtitleLabel.snp.makeConstraints { make in
             make.top.equalTo(topLabel.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
-            make.height.lessThanOrEqualTo(22)
-            make.width.equalTo(260)
+            make.height.lessThanOrEqualTo(40)
+            make.width.equalTo(240)
         }
         settingsButton.snp.makeConstraints { make in
             make.top.equalTo(topLabel.snp.top)
@@ -258,7 +258,7 @@ class FlightsController: BaseViewController {
         }
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(conteinerView.snp.bottom).offset(30)
-            make.width.equalTo(85)
+            make.width.equalTo(100)
             make.height.equalTo(22)
             make.left.equalTo(30)
         }

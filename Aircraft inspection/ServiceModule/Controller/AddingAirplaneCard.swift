@@ -17,14 +17,6 @@ class AddingAirplaneCard: BaseViewController {
     var coreManager: CoreDataManagerProtocol?
     let fetchRequest = NSFetchRequest<AirplaneList>(entityName: "AirplaneList")
     
-
-//MARK: UIScrollView
-    private lazy var scrollView: UIScrollView = {
-       let view = UIScrollView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
-        return view
-    }()
 //MARK: Name
     private var nameView: UIView = {
         let view = UIView()
@@ -115,6 +107,7 @@ class AddingAirplaneCard: BaseViewController {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .white
+        textField.keyboardType = .numberPad
         textField.font = .RobotoFlex(ofSize: 20,
                                  weight: ._700)
         return textField
@@ -141,6 +134,7 @@ class AddingAirplaneCard: BaseViewController {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .white
+        textField.keyboardType = .numberPad
         textField.font = .RobotoFlex(ofSize: 20,
                                  weight: ._700)
         return textField
@@ -183,7 +177,7 @@ class AddingAirplaneCard: BaseViewController {
         registerForKeyboardNotificftion()
         gestureRecognizer.addTarget(self,
                                     action: #selector(endEditing))
-        scrollView.addGestureRecognizer(gestureRecognizer)
+        view.addGestureRecognizer(gestureRecognizer)
     }
 //MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
@@ -193,44 +187,35 @@ class AddingAirplaneCard: BaseViewController {
     }
 //MARK: addSubview
     private func addSubview() {
-        view.addSubview(scrollView)
-    
-        scrollView.addSubview(nameView)
+//        view.addSubview(scrollView)
+        view.addSubview(nameView)
         nameView.addSubview(namePlaceholder)
         nameView.addSubview(nameTextField)
         nameTextField.delegate = self
-        scrollView.addSubview(modelView)
+        view.addSubview(modelView)
         modelView.addSubview(modelPlaceholder)
         modelView.addSubview(modelTextField)
         modelTextField.delegate = self
-        scrollView.addSubview(SNView)
+        view.addSubview(SNView)
         SNView.addSubview(SNPlaceholder)
         SNView.addSubview(SNTextField)
         SNTextField.delegate = self
-        scrollView.addSubview(LIView)
+        view.addSubview(LIView)
         LIView.addSubview(LIPlaceholder)
         LIView.addSubview(LITextField)
         LITextField.delegate = self
-
-        
-        
-        scrollView.addSubview(UpIView)
+        view.addSubview(UpIView)
         UpIView.addSubview(UpIPlaceholder)
         UpIView.addSubview(UpITextField)
         UpITextField.delegate = self
-        
-        
-        
-        
-        
-        scrollView.addSubview(flexSpaceView)
+        view.addSubview(flexSpaceView)
         view.addSubview(saveButton)
     }
 //MARK: registerForKeyboardNotificftion
     func registerForKeyboardNotificftion() {
-        NotificationCenter.default.addObserver(self, 
+        NotificationCenter.default.addObserver(self,
                                                selector: #selector(willShow),
-                                               name: UIResponder.keyboardWillShowNotification,
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(willHide),
@@ -240,7 +225,7 @@ class AddingAirplaneCard: BaseViewController {
 //MARK: removeKeyboardNotofocation
     func removeKeyboardNotofocation() {
         NotificationCenter.default.removeObserver(self,
-                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  name: UIResponder.keyboardWillChangeFrameNotification,
                                                   object: nil)
         NotificationCenter.default.removeObserver(self,
                                                   name: UIResponder.keyboardWillHideNotification,
@@ -248,10 +233,6 @@ class AddingAirplaneCard: BaseViewController {
     }
 //MARK: makeConstraint
     private func setupeConstraint() {
-        scrollView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-        }
 //MARK: Name makeConstraints
         nameView.snp.makeConstraints { make in
             make.top.equalTo(80)
@@ -357,7 +338,6 @@ class AddingAirplaneCard: BaseViewController {
             make.left.equalTo(18)
             make.height.equalTo(27)
         }
-        
         flexSpaceView.snp.makeConstraints { make in
             make.top.equalTo(UpIView.snp.bottom).offset(10)
             make.width.equalToSuperview()
@@ -388,25 +368,18 @@ class AddingAirplaneCard: BaseViewController {
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
     @objc func willShow(_ notification: Notification) {
-//        let userInfo = notification.userInfo
-//        if let size = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//            scrollView.contentOffset = CGPoint(x: 0,
-//                                               y: size.height)
-//        }
-//        scrollView.contentOffset = CGPoint(x: 0,
-//                                           y: 60)
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if UpITextField.isFirstResponder {
+                self.view.frame.origin.y = -keyboardSize.height
+            }
+            if LITextField.isFirstResponder {
+                self.view.frame.origin.y = -keyboardSize.height 
+            }
+        }
     }
     @objc func willHide(_ notification: Notification) {
-        scrollView.contentOffset = CGPoint.zero
+        self.view.frame.origin.y = 0
     }
     @objc func endEditing(_ gestuge: UIGestureRecognizer) {
         view.endEditing(true)
@@ -492,7 +465,6 @@ extension AddingAirplaneCard: UITextFieldDelegate {
             if viewModel?.validateCount(text: newString,
                                         minimumCount: 8) == true {
                 UpIView.layer.borderColor = UIColor.clear.cgColor
-//                UpIView.convert(<#T##point: CGPoint##CGPoint#>, to: <#T##any UICoordinateSpace#>)
             }
         }
        return false

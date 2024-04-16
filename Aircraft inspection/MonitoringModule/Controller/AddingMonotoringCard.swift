@@ -17,13 +17,6 @@ class AddingMonotoringCard: BaseViewController {
     let fetchRequest = NSFetchRequest<MonitoringList>(entityName: "MonitoringList")
     var balance = Bool()
     
-//MARK: UIScrollView
-    private lazy var scrollView: UIScrollView = {
-       let view = UIScrollView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
-        return view
-    }()
 //MARK: Name
     private var nameView: UIView = {
         let view = UIView()
@@ -227,7 +220,7 @@ class AddingMonotoringCard: BaseViewController {
         registerForKeyboardNotificftion()
         gestureRecognizer.addTarget(self,
                                     action: #selector(endEditing))
-        scrollView.addGestureRecognizer(gestureRecognizer)
+        view.addGestureRecognizer(gestureRecognizer)
     }
 //MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
@@ -237,40 +230,39 @@ class AddingMonotoringCard: BaseViewController {
     }
 //MARK: addSubview
     private func addSubview() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(nameView)
+        view.addSubview(nameView)
         nameView.addSubview(namePlaceholder)
         nameView.addSubview(nameTextField)
         nameTextField.delegate = self
-        scrollView.addSubview(weightView)
+        view.addSubview(weightView)
         weightView.addSubview(weightPlaceholder)
         weightView.addSubview(weightTextField)
         weightTextField.delegate = self
-        scrollView.addSubview(ETView)
+        view.addSubview(ETView)
         ETView.addSubview(ETPlaceholder)
         ETView.addSubview(ETTextField)
         ETTextField.delegate = self
-        scrollView.addSubview(APView)
+        view.addSubview(APView)
         APView.addSubview(APPlaceholder)
         APView.addSubview(APTextField)
         APTextField.delegate = self
-        scrollView.addSubview(FCView)
+        view.addSubview(FCView)
         FCView.addSubview(FCPlaceholder)
         FCView.addSubview(FCTextField)
         FCTextField.delegate = self
-        scrollView.addSubview(balanceLabel)
+        view.addSubview(balanceLabel)
         view.addSubview(goodButton)
         goodButton.addSubview(goodLabel)
         view.addSubview(violatedButton)
         violatedButton.addSubview(violatedLabel)
-        scrollView.addSubview(flexSpaceView)
+        view.addSubview(flexSpaceView)
         view.addSubview(saveButton)
     }
 //MARK: registerForKeyboardNotificftion
     func registerForKeyboardNotificftion() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(willShow),
-                                               name: UIResponder.keyboardWillShowNotification,
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(willHide),
@@ -280,7 +272,7 @@ class AddingMonotoringCard: BaseViewController {
 //MARK: removeKeyboardNotofocation
     func removeKeyboardNotofocation() {
         NotificationCenter.default.removeObserver(self,
-                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  name: UIResponder.keyboardWillChangeFrameNotification,
                                                   object: nil)
         NotificationCenter.default.removeObserver(self,
                                                   name: UIResponder.keyboardWillHideNotification,
@@ -288,10 +280,6 @@ class AddingMonotoringCard: BaseViewController {
     }
 //MARK: makeConstraint
     private func setupeConstraint() {
-        scrollView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-        }
 //MARK: Name makeConstraints
         nameView.snp.makeConstraints { make in
             make.top.equalTo(70)
@@ -493,18 +481,20 @@ class AddingMonotoringCard: BaseViewController {
         }
     }
     @objc func willShow(_ notification: Notification) {
-        scrollView.contentOffset = CGPoint(x: 0,
-                                           y: 60)
-        goodButton.isHidden = true
-        violatedButton.isHidden = true
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if FCTextField.isFirstResponder {
+                self.view.frame.origin.y = -keyboardSize.height
+            }
+            if APTextField.isFirstResponder {
+                self.view.frame.origin.y = -keyboardSize.height
+            }
+        }
     }
     @objc func willHide(_ notification: Notification) {
-        scrollView.contentOffset = CGPoint.zero
+        self.view.frame.origin.y = 0
     }
     @objc func endEditing(_ gestuge: UIGestureRecognizer) {
         view.endEditing(true)
-        goodButton.isHidden = false
-        violatedButton.isHidden = false
     }
     deinit {
         removeKeyboardNotofocation()
