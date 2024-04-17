@@ -55,6 +55,7 @@ class AddingMonotoringCard: BaseViewController {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .white
+        textField.keyboardType = .numberPad
         textField.font = .RobotoFlex(ofSize: 20,
                                      weight: ._700)
         return textField
@@ -81,6 +82,7 @@ class AddingMonotoringCard: BaseViewController {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .white
+        textField.keyboardType = .numberPad
         textField.font = .RobotoFlex(ofSize: 20,
                                      weight: ._700)
         return textField
@@ -107,6 +109,7 @@ class AddingMonotoringCard: BaseViewController {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .white
+        textField.keyboardType = .numberPad
         textField.font = .RobotoFlex(ofSize: 20,
                                      weight: ._700)
         return textField
@@ -133,6 +136,7 @@ class AddingMonotoringCard: BaseViewController {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .white
+        textField.keyboardType = .decimalPad
         textField.font = .RobotoFlex(ofSize: 20,
                                      weight: ._700)
         return textField
@@ -549,32 +553,83 @@ extension AddingMonotoringCard: UITextFieldDelegate {
         let newString = (text as NSString).replacingCharacters(in: range,
                                                                with: string)
         if textField == nameTextField {
-            nameTextField.text = newString
+            guard let text = textField.text else { return false }
             nameView.layer.borderColor = UIColor.clear.cgColor
+            nameView.layer.borderWidth = 1
+            nameTextField.text = newString
+            if newString.count < 1 {
+                nameView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            }
         }
         if textField == weightTextField {
-            weightTextField.text = newString
             weightView.layer.borderColor = UIColor.clear.cgColor
+            weightView.layer.borderWidth = 1
+            if string == "" {
+                  return true
+                } else if var text = textField.text {
+                    let unitString = " kg"
+                        text = text.replacingOccurrences(of: unitString,
+                                                         with: "")
+                        text += string + unitString
+                    weightTextField.text = text
+                }
+            if string.count < 1 {
+                nameView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            }
         }
         if textField == ETTextField {
-            ETTextField.text = newString
             ETView.layer.borderColor = UIColor.clear.cgColor
+            ETView.layer.borderWidth = 1
+            if string == "" {
+                  return true
+                } else if var text = textField.text {
+                    let unitString = " kg"
+                        text = text.replacingOccurrences(of: unitString,
+                                                         with: "")
+                        text += string + unitString
+                    ETTextField.text = text
+                }
+            if string.count < 1 {
+                ETView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            }
         }
         if textField == APTextField {
-            APTextField.text = newString
             APView.layer.borderColor = UIColor.clear.cgColor
+            APView.layer.borderWidth = 1
+            if string == "" {
+                  return true
+                } else if var text = textField.text {
+                    let unitString = " kg"
+                        text = text.replacingOccurrences(of: unitString,
+                                                         with: "")
+                        text += string + unitString
+                    APTextField.text = text
+                }
+            if string.count < 1 {
+                APView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            }
         }
         if textField == FCTextField {
-            FCTextField.text = newString
             FCView.layer.borderColor = UIColor.clear.cgColor
+            FCView.layer.borderWidth = 1
+            if string == "" {
+                  return true
+                } else if var text = textField.text {
+                    let unitString = " kg"
+                        text = text.replacingOccurrences(of: unitString,
+                                                         with: "")
+                        text += string + unitString
+                    FCTextField.text = text
+                }
+            if string.count < 1 {
+                FCView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            }
         }
        return false
     }
 //MARK: textFieldShouldReturn
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        goodButton.isHidden = false
-        violatedButton.isHidden = false
         return true
     }
 }
@@ -586,7 +641,7 @@ extension AddingMonotoringCard {
                                                       in: context) else { return }
           let model = MonitoringList(entity: entity,
                                    insertInto: coreManager?.context)
-        guard let weight = weightTextField.text,
+        guard var weight = weightTextField.text,
          let engineTemperature = ETTextField.text,
          let airPressure = APTextField.text,
          let fuelConsumption = FCTextField.text else { return }
@@ -595,15 +650,21 @@ extension AddingMonotoringCard {
             let id = Int16(count - 1)
             model.id = id
             model.name = nameTextField.text
-            
-            model.weight = Int32(weight) ?? 0
-            model.engineTemperature = Int32(engineTemperature) ?? 0
-            model.airPressure =  Int32(airPressure) ?? 0
-            model.fuelConsumption =  Double(fuelConsumption) ?? 0
+            model.weight = Int32(filter(weight)) ?? 0
+            model.engineTemperature = Int32(filter(engineTemperature)) ?? 0
+            model.airPressure =  Int32(filter(airPressure)) ?? 0
+            let someNumb = NumberFormatter().number(from: filter(fuelConsumption))
+            if let someNumb = someNumb {
+                let doubleValue = Double(truncating: someNumb)
+                model.fuelConsumption = doubleValue
+            }
             model.balance = self.balance
         } catch {
             print(error.localizedDescription)
         }
         coreManager?.delegat.saveContext()
+    }
+    func filter(_ string: String) -> String {
+        return string.trimmingCharacters(in: CharacterSet(charactersIn: "0123456789,.").inverted)
     }
 }

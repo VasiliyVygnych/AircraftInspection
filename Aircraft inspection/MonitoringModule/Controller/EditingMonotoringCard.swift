@@ -16,7 +16,7 @@ class EditingMonotoringCard: BaseViewController {
     var coreManager: CoreDataManagerProtocol?
     var model: MonitoringList?
     var balance = Bool()
-    
+
 //MARK: Name
     private var nameView: UIView = {
         let view = UIView()
@@ -55,6 +55,7 @@ class EditingMonotoringCard: BaseViewController {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .white
+        textField.keyboardType = .numberPad
         textField.font = .RobotoFlex(ofSize: 20,
                                      weight: ._700)
         return textField
@@ -91,6 +92,7 @@ class EditingMonotoringCard: BaseViewController {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .white
+        textField.keyboardType = .numberPad
         textField.font = .RobotoFlex(ofSize: 20,
                                      weight: ._700)
         return textField
@@ -127,6 +129,7 @@ class EditingMonotoringCard: BaseViewController {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .white
+        textField.keyboardType = .numberPad
         textField.font = .RobotoFlex(ofSize: 20,
                                      weight: ._700)
         return textField
@@ -163,6 +166,7 @@ class EditingMonotoringCard: BaseViewController {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .white
+        textField.keyboardType = .decimalPad
         textField.font = .RobotoFlex(ofSize: 20,
                                      weight: ._700)
         return textField
@@ -305,7 +309,8 @@ class EditingMonotoringCard: BaseViewController {
     }
 //MARK: setupTextFieldText
     private func setupTextFieldText(model: MonitoringList?) {
-        guard let text = model else { return }
+        guard let value = model else { return }
+        self.balance = value.balance
         if model?.balance == true {
             goodButton.backgroundColor = .white
             goodLabel.textColor = .black
@@ -314,10 +319,10 @@ class EditingMonotoringCard: BaseViewController {
             violatedLabel.textColor = .black
         }
         nameTextField.text = model?.name
-        weightTextField.text = String(text.weight)
-        ETTextField.text = String(text.engineTemperature)
-        APTextField.text = String(text.airPressure)
-        FCTextField.text = String(text.fuelConsumption)
+        weightTextField.text = String(value.weight)
+        ETTextField.text = String(value.engineTemperature)
+        APTextField.text = String(value.airPressure)
+        FCTextField.text = String(value.fuelConsumption)
     }
 //MARK: registerForKeyboardNotificftion
     func registerForKeyboardNotificftion() {
@@ -596,74 +601,65 @@ extension EditingMonotoringCard: UITextFieldDelegate {
         let newString = (text as NSString).replacingCharacters(in: range,
                                                                with: string)
         if textField == nameTextField {
-            nameView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            nameView.layer.borderColor = UIColor.clear.cgColor
             nameView.layer.borderWidth = 1
             nameTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 4) == true {
-                nameView.layer.borderColor = UIColor.clear.cgColor
+            if newString.count < 1 {
+                nameView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
             }
         }
         if textField == weightTextField {
-            weightView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            weightView.layer.borderColor = UIColor.clear.cgColor
             weightView.layer.borderWidth = 1
             weightTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 2) == true {
-                weightView.layer.borderColor = UIColor.clear.cgColor
+            if newString.count < 1 {
+                weightView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
             }
         }
         if textField == ETTextField {
-            ETView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            ETView.layer.borderColor = UIColor.clear.cgColor
             ETView.layer.borderWidth = 1
             ETTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 2) == true {
-                ETView.layer.borderColor = UIColor.clear.cgColor
+            if newString.count < 1 {
+                ETView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
             }
         }
         if textField == APTextField {
-            APView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            APView.layer.borderColor = UIColor.clear.cgColor
             APView.layer.borderWidth = 1
             APTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 3) == true {
-                APView.layer.borderColor = UIColor.clear.cgColor
+            if newString.count < 1 {
+                APView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
             }
         }
         if textField == FCTextField {
-            FCView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
+            FCView.layer.borderColor = UIColor.clear.cgColor
             FCView.layer.borderWidth = 1
             FCTextField.text = newString
-            if viewModel?.validateCount(text: newString,
-                                        minimumCount: 2) == true {
-                FCView.layer.borderColor = UIColor.clear.cgColor
+            if newString.count < 1 {
+                FCView.layer.borderColor = UIColor(named: "basikRed")?.cgColor
             }
         }
        return false
-    }
-//MARK: textFieldShouldReturn
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        goodButton.isHidden = false
-        violatedButton.isHidden = false
-        return true
     }
 }
 //MARK: - addAirplane
 extension EditingMonotoringCard {
     func editAirplane() {
         guard let weight = weightTextField.text,
-         let engineTemperature = ETTextField.text,
-         let airPressure = APTextField.text,
-         let fuelConsumption = FCTextField.text else { return }
-        guard let id = model?.id else { return }
+        let engineTemperature = ETTextField.text,
+        let airPressure = APTextField.text,
+        let fuelConsumption = FCTextField.text,
+        let id = model?.id,
+        let value = model else { return }
+        let def = NSNumber(integerLiteral: Int(value.fuelConsumption))
+        let someNumb = NumberFormatter().number(from: fuelConsumption) ?? def
         coreManager?.editMonitoringList(with: Int(id),
                                         weight: Int32(weight) ?? 0,
                                         name: nameTextField.text,
                                         airPressure: Int32(airPressure) ?? 0,
                                         engineTemperature: Int32(engineTemperature) ?? 0,
-                                        fuelConsumption: Double(fuelConsumption) ?? 0,
+                                        fuelConsumption: Double(truncating: someNumb),
                                         balance: self.balance)
     }
 }
