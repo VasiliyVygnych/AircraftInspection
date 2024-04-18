@@ -18,14 +18,14 @@ final class LoaderViewController: BaseViewController {
        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFill
-        view.image = UIImage(named: "plane")
+        view.image = UIImage(named: "start") //name
         return view
     }()
     private var appNameImage: UIImageView = {
        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(named: "appName")
+        view.image = UIImage(named: "name")
         return view
     }()
     private var ellipseImage: UIImageView = {
@@ -33,14 +33,6 @@ final class LoaderViewController: BaseViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFill
         view.image = UIImage(named: "ellipse")
-        return view
-    }()
-//MARK: UIView
-    private var redView: UIView = {
-      let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "basikRed")
-        view.layer.cornerRadius = 18
         return view
     }()
 //MARK: UIProgressView
@@ -90,8 +82,7 @@ final class LoaderViewController: BaseViewController {
 //MARK: addSubview
     private func addSubview() {
         view.addSubview(logoImage)
-        view.addSubview(redView)
-        redView.addSubview(appNameImage)
+        view.addSubview(appNameImage)
         view.addSubview(progressLabel)
         view.addSubview(progressBar)
         view.addSubview(tileLabel)
@@ -100,7 +91,7 @@ final class LoaderViewController: BaseViewController {
 //MARK: setupeProgressBar
     private func setupeProgressBar() {
         for x in 0...100 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(x)*0.02 ) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(x)*0.09 ) {
                 self.progressBar.setProgress(Float(x)/100,
                                              animated: true)
                 let uploader: Float = Float(x) / 100
@@ -122,25 +113,18 @@ final class LoaderViewController: BaseViewController {
     }
 //MARK: setupeConstraint
     private func setupeConstraint() {
-        logoImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(145)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(245.2)
-            make.height.equalTo(151.42)
-        }
         appNameImage.snp.makeConstraints { make in
-            make.top.equalTo(logoImage.snp.bottom).offset(14.99)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().inset(8)
-            make.left.equalTo(8)
-            make.height.equalTo(120)
-        }
-        redView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(145)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().inset(43)
             make.left.equalTo(43)
-            make.height.equalTo(61)
-            make.bottom.equalTo(appNameImage.snp.bottom).inset(2)
+            make.height.equalTo(60)
+        }
+        logoImage.snp.makeConstraints { make in
+            make.top.equalTo(appNameImage.snp.bottom).offset(30)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(293.66)
+            make.height.equalTo(246.22)
         }
         progressBar.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(533)
