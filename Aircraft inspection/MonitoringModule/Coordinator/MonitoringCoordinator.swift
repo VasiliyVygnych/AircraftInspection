@@ -18,7 +18,7 @@ class MonitoringCoordinator: MonitoringCoordinatorProtocol {
         self.assembler = assembler
     }
     
-    
+//MARK: setMainController
     func setMainController(controller: MonitoringController) {
         assembler.main = controller
     }

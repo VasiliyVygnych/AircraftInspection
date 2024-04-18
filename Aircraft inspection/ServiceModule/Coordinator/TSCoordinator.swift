@@ -18,6 +18,7 @@ class TSCoordinator: TSCoordinatorProtocol {
         self.assembler = assembler
     }
     
+//MARK: setMainController
     func setMainController(controller: TechnicalServiceController) {
         assembler.main = controller
     }

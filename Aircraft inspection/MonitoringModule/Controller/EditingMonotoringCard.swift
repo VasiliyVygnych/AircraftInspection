@@ -652,8 +652,8 @@ extension EditingMonotoringCard {
         let fuelConsumption = FCTextField.text,
         let id = model?.id,
         let value = model else { return }
-        let def = NSNumber(integerLiteral: Int(value.fuelConsumption))
-        let someNumb = NumberFormatter().number(from: fuelConsumption) ?? def
+        let defValue = NSNumber(value: value.fuelConsumption)
+        let someNumb = NumberFormatter().number(from: fuelConsumption) ?? defValue
         coreManager?.editMonitoringList(with: Int(id),
                                         weight: Int32(weight) ?? 0,
                                         name: nameTextField.text,

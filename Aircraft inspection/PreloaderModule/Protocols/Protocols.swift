@@ -9,7 +9,6 @@ import UIKit
 
 protocol LoaderViewModelProtocol {
     var coordinator: CoordinatorProtocol? { get set }
-    
     func showFirstController()
     func showSecondController()
     func showThirdController()

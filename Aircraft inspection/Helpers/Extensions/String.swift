@@ -22,50 +22,5 @@ extension String {
             }
         }
         return result
-    }
-    
-    
-    func formatterNumber() -> String {
-//        let cleanPhoneNumber = components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-//        let kg = " kg"
-//        let mark = "XX"
-//        var result = ""
-//        var startIndex = cleanPhoneNumber.startIndex
-//        let endIndex = cleanPhoneNumber.endIndex
-//        for charct in mark where startIndex < endIndex {
-//            if charct == "X" {
-//                result.append(cleanPhoneNumber[startIndex])
-//                startIndex = cleanPhoneNumber.index(after: startIndex)
-//            } else {
-//                result.append(charct)
-//            }
-//        }
-//        return result
-        
-        var cleanPhoneNumber = components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-        
-        let kg = " kg"
-        let mark = "XX"
-        var result = ""
-        var startIndex = cleanPhoneNumber.startIndex
-        let endIndex = cleanPhoneNumber.endIndex
-        
-        cleanPhoneNumber.append(kg)
-        
-        for charct in mark where startIndex < endIndex {
-            if charct == "X" {
-                result.append(cleanPhoneNumber[startIndex])
-                startIndex = cleanPhoneNumber.index(after: startIndex)
-                
-                
-            } else {
-                result.append(charct)
-            }
-        }
-        return result
-    }
-    
-    
-    
-    
+    }  
 }

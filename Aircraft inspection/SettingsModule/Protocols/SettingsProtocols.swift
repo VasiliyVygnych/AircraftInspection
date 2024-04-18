@@ -12,10 +12,8 @@ protocol SettingsControllerDelegate {
 }
 
 protocol SettingsViewModelProtocol {
-    
     var view: SettingsControllerDelegate? { get set }
     var network: NetworkProtocol? { get set }
-    
     func shareApp() -> UIActivityViewController
     func rateApp()
     func clickAnimate(view: UIView)

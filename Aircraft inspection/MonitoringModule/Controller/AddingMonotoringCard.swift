@@ -553,7 +553,6 @@ extension AddingMonotoringCard: UITextFieldDelegate {
         let newString = (text as NSString).replacingCharacters(in: range,
                                                                with: string)
         if textField == nameTextField {
-            guard let text = textField.text else { return false }
             nameView.layer.borderColor = UIColor.clear.cgColor
             nameView.layer.borderWidth = 1
             nameTextField.text = newString

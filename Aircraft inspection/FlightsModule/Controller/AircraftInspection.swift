@@ -326,6 +326,16 @@ class AircraftInspection: BaseViewController {
         label.text = "ADD"
         return label
     }()
+//MARK: UILabel
+    private var countLabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(named: "white66")
+        label.font = .RobotoFlex(ofSize: 12,
+                                 weight: ._300)
+        label.textAlignment = .right
+        return label
+    }()
 //MARK: UIView
     private var flexSpaceView: UIView = {
         let view = UIView()
@@ -403,6 +413,7 @@ class AircraftInspection: BaseViewController {
         view.addSubview(notesView)
         notesView.addSubview(notesTextView)
         notesTextView.addSubview(notesLabel)
+        notesView.addSubview(countLabel)
         notesTextView.delegate = self
         view.addSubview(addButton)
         addButton.addSubview(buttonTitle)
@@ -720,6 +731,12 @@ class AircraftInspection: BaseViewController {
             make.left.equalTo(5)
             make.height.equalTo(20)
         }
+        countLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(5)
+            make.width.equalTo(50)
+            make.right.equalTo(-15)
+            make.height.equalTo(15)
+        }
 //MARK: addButton makeConstraints
         addButton.snp.makeConstraints { make in
             make.top.equalTo(notesView.snp.bottom).offset(10)
@@ -745,7 +762,15 @@ extension AircraftInspection: UITextViewDelegate {
         } else {
             notesLabel.isHidden = true
         }
-  
+    }
+    func textView(_ textView: UITextView, 
+                  shouldChangeTextIn range: NSRange,
+                  replacementText text: String) -> Bool {
+        let newText = (notesTextView.text as NSString).replacingCharacters(in: range,
+                                                                           with: text)
+        countLabel.text = "\(newText.count)/200"
+        let numberOfChars = newText.count
+        return numberOfChars < 200
     }
     override func touchesBegan(_ touches: Set<UITouch>,
                                with event: UIEvent?) {

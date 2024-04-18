@@ -13,7 +13,6 @@ class FlightsController: BaseViewController {
     
     var viewModel: FlightsVMProtocol?
     var coreManager: CoreDataManagerProtocol?
-    
     private var dataSource: UICollectionViewDiffableDataSource<Sections,
                                                                FlightsList>?
     lazy var sortDescriptor = NSSortDescriptor(key: "id",

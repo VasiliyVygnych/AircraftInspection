@@ -12,7 +12,6 @@ import CoreData
 class AddingAirplaneCard: BaseViewController {
     
     weak var delegate: TSViewControllerDelegate?
-    
     var viewModel: TSViewModelProtocol?
     var coreManager: CoreDataManagerProtocol?
     let fetchRequest = NSFetchRequest<AirplaneList>(entityName: "AirplaneList")
@@ -231,7 +230,6 @@ class AddingAirplaneCard: BaseViewController {
                                                   name: UIResponder.keyboardWillHideNotification,
                                                   object: nil)
     }
-//MARK: makeConstraint
     private func setupeConstraint() {
 //MARK: Name makeConstraints
         nameView.snp.makeConstraints { make in

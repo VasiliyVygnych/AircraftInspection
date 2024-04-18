@@ -15,7 +15,6 @@ class TSViewModel: TSViewModelProtocol {
     func setMainController(controller: TechnicalServiceController) {
         coordinator?.setMainController(controller: controller)
     }
-
 //MARK: navigation
     func presentAddingAirplaneCardView() {
         coordinator?.presentAddingAirplaneCardView()

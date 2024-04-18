@@ -12,15 +12,17 @@ class AnalyticsCoordinator: AnalyticsCoordinatorProtocol {
     var navigationController: UINavigationController?
     var assembler: AnalyticsBuilderProtocol
     
-    func setMainController(controller: AnalyticsController) {
-        assembler.main = controller
-    }
     init(navigationController: UINavigationController?,
          assembler: AnalyticsBuilderProtocol = AnalyticsBuilder()) {
         self.navigationController = navigationController
         self.assembler = assembler
     }
     
+//MARK: setMainController
+    func setMainController(controller: AnalyticsController) {
+        assembler.main = controller
+    }
+//MARK: presentDetailAnalytics
     func presentDetailAnalytics(model: FlightsList?) {
         if let navigationController = navigationController {
             navigationController.present(assembler.createDetailAnalytics(coordinator: self,

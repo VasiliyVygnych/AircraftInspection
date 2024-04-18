@@ -13,7 +13,6 @@ protocol AnalyticsVCDelegate: AnyObject {
 
 protocol AnalyticsVMProtocol {
     var coordinator: AnalyticsCoordinatorProtocol? { get set }
-    
     func presentDetailAnalytics(model: FlightsList?)
     func presentSettingsController()
     func setMainController(controller: AnalyticsController)

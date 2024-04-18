@@ -13,7 +13,7 @@ final class LoaderViewController: BaseViewController {
     var viewModel: LoaderViewModelProtocol?
     var defaults = UserDefaults.standard
     
-//MARK: - UIImageView
+//MARK: UIImageView
     private var logoImage: UIImageView = {
        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +35,7 @@ final class LoaderViewController: BaseViewController {
         view.image = UIImage(named: "ellipse")
         return view
     }()
-    //MARK: - UIView
+//MARK: UIView
     private var redView: UIView = {
       let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +43,7 @@ final class LoaderViewController: BaseViewController {
         view.layer.cornerRadius = 18
         return view
     }()
-//MARK: - UIProgressView
+//MARK: UIProgressView
     private let progressBar: UIProgressView = {
         let view = UIProgressView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +54,7 @@ final class LoaderViewController: BaseViewController {
         view.clipsToBounds = true
         return view
     }()
-//MARK: - UILabel
+//MARK: UILabel
     private var progressLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +75,7 @@ final class LoaderViewController: BaseViewController {
         label.text = "Add your  aircraft for maintenance"
         return label
     }()
-//MARK: - viewDidLoad
+//MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -83,11 +83,11 @@ final class LoaderViewController: BaseViewController {
         setupeProgressBar()
         setupeConstraint()
     }
-//MARK: - viewWillAppear
+//MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         settingUpTheView(.loader)
     }
-//MARK: - addSubview
+//MARK: addSubview
     private func addSubview() {
         view.addSubview(logoImage)
         view.addSubview(redView)
@@ -97,7 +97,7 @@ final class LoaderViewController: BaseViewController {
         view.addSubview(tileLabel)
         view.addSubview(ellipseImage)
     }
-//MARK: - setupeProgressBar
+//MARK: setupeProgressBar
     private func setupeProgressBar() {
         for x in 0...100 {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double(x)*0.02 ) {
@@ -120,7 +120,7 @@ final class LoaderViewController: BaseViewController {
             }
         }
     }
-//MARK: - setupeConstraint
+//MARK: setupeConstraint
     private func setupeConstraint() {
         logoImage.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(145)

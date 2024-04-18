@@ -13,7 +13,6 @@ protocol MonitoringVCDelegate: AnyObject {
 
 protocol MonitoringVMProtocol {
     var coordinator: MonitoringCoordinatorProtocol? { get set }
-    
     func presentAddingMonitoringCardView()
     func presentEditingMonotoringCardView(model: MonitoringList?)
     func showDeailMonitoringCard(model: MonitoringList?)
@@ -25,9 +24,7 @@ protocol MonitoringVMProtocol {
 }
 
 protocol MonitoringBuilderProtocol {
-    
     var main: MonitoringController? { get set }
-    
     func createAddingMonitoringCardView(coordinator: MonitoringCoordinatorProtocol) -> UIViewController
     func createEditingMonotoringCard(coordinator: MonitoringCoordinatorProtocol,
                                        model: MonitoringList?) -> UIViewController

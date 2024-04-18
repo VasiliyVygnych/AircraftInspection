@@ -13,7 +13,6 @@ protocol FlightsVCDelegate: AnyObject {
 
 protocol FlightsVMProtocol {
     var coordinator: FlightsCoordinatorProtocol? { get set }
-    
     func presentAddAircraftInspectionView()
     func presentAircraftInspectionView(model: FlightsList?)
     func presentSettingsController()
@@ -28,9 +27,7 @@ protocol FlightsVMProtocol {
 }
 
 protocol FlightsBuilderProtocol {
-    
     var main: FlightsController? { get set }
-    
     func createAddAircraftInspectionView(coordinator: FlightsCoordinatorProtocol) -> UIViewController
     func createAircraftInspectionView(coordinator: FlightsCoordinatorProtocol,
                                       model: FlightsList?) -> UIViewController

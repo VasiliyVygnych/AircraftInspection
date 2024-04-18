@@ -11,7 +11,6 @@ class MonitoringViewModel: MonitoringVMProtocol {
     
     var coordinator: MonitoringCoordinatorProtocol? 
     
-    
     func setMainController(controller: MonitoringController) {
         coordinator?.setMainController(controller: controller)
     }

@@ -18,6 +18,7 @@ class FlightsCoordinator: FlightsCoordinatorProtocol {
         self.assembler = assembler
     }
     
+//MARK: setMainController/
     func setMainController(controller: FlightsController) {
         assembler.main = controller
     }

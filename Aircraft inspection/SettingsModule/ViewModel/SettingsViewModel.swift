@@ -13,6 +13,7 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     var view: SettingsControllerDelegate?
     var network: NetworkProtocol?
     
+//MARK: requestUsagePolicy
     func requestUsagePolicy() {
         network?.requestUsagePolicy(completion: { [ weak self ] request in
             DispatchQueue.main.async {
@@ -20,6 +21,7 @@ final class SettingsViewModel: SettingsViewModelProtocol {
             }
         })
     }
+//MARK: requestSupport
     func requestSupport() {
         network?.requestSupport(completion: { [ weak self ] request in
             DispatchQueue.main.async {

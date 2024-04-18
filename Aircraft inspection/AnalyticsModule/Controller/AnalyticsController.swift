@@ -13,7 +13,6 @@ class AnalyticsController: BaseViewController {
     
     var viewModel: AnalyticsVMProtocol?
     var coreManager: CoreDataManagerProtocol?
-    
     private var dataSource: UICollectionViewDiffableDataSource<Sections,
                                                                FlightsList>?
     lazy var sortDescriptor = NSSortDescriptor(key: "id",
@@ -210,20 +209,20 @@ class AnalyticsController: BaseViewController {
             make.width.lessThanOrEqualTo(114)
             make.height.greaterThanOrEqualTo(74)
             make.height.lessThanOrEqualTo(114)
-            make.bottom.equalToSuperview().inset(40)
-        }
-        collectionView.snp.makeConstraints { make in
-            make.top.equalTo(conteinerView.snp.bottom).offset(70)
-            make.width.equalToSuperview()
-            make.height.greaterThanOrEqualTo(330)
-            make.height.lessThanOrEqualToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(30)
         }
         subTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(collectionView.snp.top).offset(40)
+            make.top.equalTo(conteinerView.snp.bottom).offset(70)
             make.centerX.equalToSuperview()
             make.width.equalTo(166)
             make.height.equalTo(43)
+        }
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(conteinerView.snp.bottom).offset(10)
+            make.width.equalToSuperview()
+            make.height.greaterThanOrEqualTo(390)
+            make.height.lessThanOrEqualToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
 }
