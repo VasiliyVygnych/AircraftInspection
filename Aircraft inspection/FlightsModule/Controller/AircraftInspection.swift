@@ -354,12 +354,24 @@ class AircraftInspection: BaseViewController {
                 button.backgroundColor = .white
             }
         }
+        configure(model: model)
     }
 //MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         settingUpTheView(.defaults)
         navigationController?.navigationBar.isHidden = true
+    }
+//MARK: configure
+    private func configure(model: FlightsList?) {
+        guard let data = model?.reportFrom else { return }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM yyyy"
+        dateTextField.text = formatter.string(from: data)
+        if model?.notes?.isEmpty == false {
+            notesLabel.isHidden = true
+            notesTextView.text = model?.notes
+        }
     }
 //MARK: addSubview
     private func addSubview() {

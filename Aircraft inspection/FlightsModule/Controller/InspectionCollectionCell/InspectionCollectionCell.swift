@@ -39,14 +39,13 @@ class InspectionCollectionCell: UICollectionViewCell {
         label.textAlignment = .left
         return label
     }()
-    private var buttonTitle: UILabel = {
+   private var buttonTitle: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
         label.font = .RobotoFlex(ofSize: 13,
                                  weight: ._500)
         label.textAlignment = .center
-        label.text = "Start checking"
         return label
     }()
 //MARK: UIButton
@@ -60,6 +59,7 @@ class InspectionCollectionCell: UICollectionViewCell {
 //MARK: init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        buttonTitle.text = "Start checking"
         addSubview()
         сreatedConstraints()
         setupeButton()
@@ -132,5 +132,3 @@ private extension InspectionCollectionCell {
         }
     }
 }
-
-
