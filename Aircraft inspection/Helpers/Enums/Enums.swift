@@ -18,6 +18,7 @@ enum Controllers {
     case analytic
     case defaults
     case settings
+    case none
 }
 
 //MARK: Controllers

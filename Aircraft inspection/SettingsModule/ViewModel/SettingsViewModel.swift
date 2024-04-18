@@ -34,7 +34,7 @@ final class SettingsViewModel: SettingsViewModelProtocol {
                                           applicationActivities: nil)
         return vc
     }
-    //MARK: Rate App
+//MARK: Rate App
     func rateApp() {
         SKStoreReviewController.requestReviewInCurrentScene()
     }

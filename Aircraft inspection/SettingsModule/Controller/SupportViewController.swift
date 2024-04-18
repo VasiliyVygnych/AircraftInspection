@@ -9,8 +9,7 @@ import UIKit
 import SnapKit
 import WebKit
 
-class SupportViewController: UIViewController, 
-                                WKUIDelegate {
+class SupportViewController: BaseViewController {
     
     var viewModel: SettingsViewModelProtocol?
     private var webView = WKWebView()
@@ -43,19 +42,31 @@ class SupportViewController: UIViewController,
         addSubview()
         setupeConstraint()
         setupeButton()
-        view.backgroundColor = UIColor(named: "background")
+        setupeGesture()
+    }
+//MARK: viewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.navigationBar.isHidden = true
+        settingUpTheView(.none)
     }
 //MARK: setupeWebView
     private func setupeWebView() {
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.navigationDelegate = self
         webView.backgroundColor = .white
     }
 //MARK: addSubview
     private func addSubview() {
         view.addSubview(backButton)
         view.addSubview(navTitle)
+    }
+//MARK: setupeGesture
+    private func setupeGesture() {
+        view.addGestureRecognizer(swipeGesture)
+        swipeGesture.addTarget(self,
+                               action: #selector(popView))
+        swipeGesture.direction = .left
     }
 //MARK: setupeConstraint
     private func setupeConstraint() {
@@ -82,18 +93,9 @@ class SupportViewController: UIViewController,
                              action: #selector(popView),
                              for: .touchUpInside)
     }
-    @objc func popView() {
-        dismiss(animated: true)
-    }
 }
 extension SupportViewController: SettingsControllerDelegate {
     func setRequest(request: URLRequest) {
         webView.load(request)
-    }
-}
-extension SupportViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView,
-                 didCommit navigation: WKNavigation!) {
-//        webView.stopLoading()
     }
 }

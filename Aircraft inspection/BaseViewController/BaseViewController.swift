@@ -99,6 +99,9 @@ extension BaseViewController {
             navTitle.font = .RobotoFlex(ofSize: 20,
                                         weight: ._500)
             navTitle.text = "Settings"
+        case .none:
+            view.backgroundColor = UIColor(named: "background")
+            backButton.isHidden = true
         }
     }
 }
