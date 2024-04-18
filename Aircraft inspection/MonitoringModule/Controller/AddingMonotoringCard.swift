@@ -583,7 +583,7 @@ extension AddingMonotoringCard: UITextFieldDelegate {
             if string == "" {
                   return true
                 } else if var text = textField.text {
-                    let unitString = " kg"
+                    let unitString = " °C"
                         text = text.replacingOccurrences(of: unitString,
                                                          with: "")
                         text += string + unitString
@@ -599,7 +599,7 @@ extension AddingMonotoringCard: UITextFieldDelegate {
             if string == "" {
                   return true
                 } else if var text = textField.text {
-                    let unitString = " kg"
+                    let unitString = " GPa"
                         text = text.replacingOccurrences(of: unitString,
                                                          with: "")
                         text += string + unitString
@@ -615,7 +615,7 @@ extension AddingMonotoringCard: UITextFieldDelegate {
             if string == "" {
                   return true
                 } else if var text = textField.text {
-                    let unitString = " kg"
+                    let unitString = " g/pass-km"
                         text = text.replacingOccurrences(of: unitString,
                                                          with: "")
                         text += string + unitString
@@ -641,7 +641,7 @@ extension AddingMonotoringCard {
                                                       in: context) else { return }
           let model = MonitoringList(entity: entity,
                                    insertInto: coreManager?.context)
-        guard var weight = weightTextField.text,
+        guard let weight = weightTextField.text,
          let engineTemperature = ETTextField.text,
          let airPressure = APTextField.text,
          let fuelConsumption = FCTextField.text else { return }

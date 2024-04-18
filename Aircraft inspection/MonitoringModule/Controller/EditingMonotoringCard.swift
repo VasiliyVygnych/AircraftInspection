@@ -114,7 +114,7 @@ class EditingMonotoringCard: BaseViewController {
         label.font = .RobotoFlex(ofSize: 20,
                                  weight: ._700)
         label.textAlignment = .left
-        label.text = "kg"
+        label.text = "°C"
         return label
     }()
 //MARK: Air pressure
